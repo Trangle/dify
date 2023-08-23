@@ -12,7 +12,7 @@ const config: ProviderConfig = {
     icon: <OpenaiBlack className='w-full h-full' />,
   },
   item: {
-    key: ProviderEnum.openai,
+    key: ProviderEnum.xopenai,
     titleIcon: {
       'en': <OpenaiText className='h-5' />,
       'zh-Hans': <OpenaiText className='h-5' />,
@@ -25,7 +25,7 @@ const config: ProviderConfig = {
     bgColor: 'bg-gray-200',
   },
   modal: {
-    key: ProviderEnum.openai,
+    key: ProviderEnum.xopenai,
     title: {
       'en': 'XOpenAI',
       'zh-Hans': 'XOpenAI',

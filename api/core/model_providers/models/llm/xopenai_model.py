@@ -10,7 +10,7 @@ from core.model_providers.providers.base import BaseModelProvider
 from core.third_party.langchain.llms.chat_open_ai import EnhanceChatOpenAI
 from core.model_providers.error import LLMBadRequestError, LLMAPIConnectionError, LLMAPIUnavailableError, \
     LLMRateLimitError, LLMAuthorizationError, ModelCurrentlyNotSupportError
-from core.third_party.langchain.llms.open_ai import EnhanceOpenAI
+from core.third_party.langchain.llms.xopen_ai import EnhanceXOpenAI
 from core.model_providers.models.llm.base import BaseLLM
 from core.model_providers.models.entity.message import PromptMessage, MessageType
 from core.model_providers.models.entity.model_params import ModelMode, ModelKwargs
