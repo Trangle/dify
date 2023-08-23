@@ -11,16 +11,14 @@ import openai
 
 from core.helper import encrypter
 from core.model_providers.models.entity.provider import ModelFeature
-from core.model_providers.models.speech2text.openai_whisper import OpenAIWhisper
 from core.model_providers.models.base import BaseProviderModel
 from core.model_providers.models.embedding.openai_embedding import OpenAIEmbedding
 from core.model_providers.models.entity.model_params import ModelKwargsRules, KwargRule, ModelType
 from core.model_providers.models.llm.openai_model import OpenAIModel
-from core.model_providers.models.moderation.openai_moderation import OpenAIModeration
 from core.model_providers.providers.base import BaseModelProvider, CredentialsValidateFailedError
 from core.model_providers.providers.hosted import hosted_model_providers
 from extensions.ext_database import db
-from models.provider import ProviderType, ProviderModel, ProviderQuotaType
+from models.provider import ProviderType, ProviderModel
 
 
 BASE_MODELS = [
@@ -314,6 +312,9 @@ class XOpenAIProvider(BaseModelProvider):
         """
         return {}
 
+    def get_provider_credentials(self, obfuscated: bool = False) -> dict:
+        return {}
+    
     def _convert_provider_config_to_model_config(self):
         if self.provider.provider_type == ProviderType.CUSTOM.value \
                 and self.provider.is_valid \
