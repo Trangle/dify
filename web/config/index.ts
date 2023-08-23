@@ -59,8 +59,8 @@ export const TONE_LIST = [
     id: 1,
     name: 'Creative',
     config: {
-      temperature: 0.8,
-      top_p: 0.9,
+      temperature: 1.0,
+      top_p: 0.95,
       presence_penalty: 0.1,
       frequency_penalty: 0.1,
     },
@@ -69,8 +69,8 @@ export const TONE_LIST = [
     id: 2,
     name: 'Balanced',
     config: {
-      temperature: 0.5,
-      top_p: 0.85,
+      temperature: 0.7,
+      top_p: 0.9,
       presence_penalty: 0.2,
       frequency_penalty: 0.3,
     },

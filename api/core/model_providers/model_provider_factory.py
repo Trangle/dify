@@ -63,6 +63,9 @@ class ModelProviderFactory:
         elif provider_name == 'openllm':
             from core.model_providers.providers.openllm_provider import OpenLLMProvider
             return OpenLLMProvider
+        elif provider_name == 'xopenai':
+            from core.model_providers.providers.xopenai_provider import XOpenAIProvider
+            return XOpenAIProvider
         else:
             raise NotImplementedError
 

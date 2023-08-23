@@ -4,6 +4,8 @@ services:
   db:
     image: postgres:15-alpine
     restart: always
+    networks:
+      - yutang
     environment:
       # The password for the default postgres user.
       POSTGRES_PASSWORD: difyai123456
@@ -20,6 +22,8 @@ services:
   redis:
     image: redis:6-alpine
     restart: always
+    networks:
+      - yutang
     volumes:
       # Mount the redis data directory to the container.
       - ./volumes/redis/data:/data
@@ -32,6 +36,8 @@ services:
   weaviate:
     image: semitechnologies/weaviate:1.18.4
     restart: always
+    networks:
+      - yutang
     volumes:
       # Mount the Weaviate data directory to the container.
       - ./volumes/weaviate:/var/lib/weaviate
@@ -50,3 +56,8 @@ services:
       AUTHORIZATION_ADMINLIST_USERS: 'hello@dify.ai'
     ports:
       - "8080:8080"
+
+networks:
+  yutang:
+    external: true
+
