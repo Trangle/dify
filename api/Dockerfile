@@ -20,7 +20,7 @@ RUN apt-get update && \
 
 COPY requirements.txt /app/api/requirements.txt
 
-RUN pip install -r requirements.txt
+RUN pip install -U pip && pip install -r requirements.txt
 
 COPY . /app/api/
 

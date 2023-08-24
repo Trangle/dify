@@ -58,6 +58,7 @@ class XOpenAIProvider(BaseModelProvider):
                 }
 
                 credentials = json.loads(provider_model.encrypted_config)
+                print(f"<<<<<<<<<<<<<<<<<<<<<{credentials}")
                 if credentials['base_model_name'] in [
                     'gpt-4',
                     'gpt-4-32k',
@@ -240,15 +241,6 @@ class XOpenAIProvider(BaseModelProvider):
                 }
 
             credentials = json.loads(provider_model.encrypted_config)
-            if credentials['openai_api_key']:
-                credentials['openai_api_key'] = encrypter.decrypt_token(
-                    self.provider.tenant_id,
-                    credentials['openai_api_key']
-                )
-
-                if obfuscated:
-                    credentials['openai_api_key'] = encrypter.obfuscated_token(credentials['openai_api_key'])
-            
             if not credentials.get('openai_api_base'):
                 credentials['openai_api_base'] = None
             else:
