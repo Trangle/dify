@@ -58,7 +58,7 @@ class EnhanceChatXOpenAI(ChatOpenAI):
 
     def get_num_tokens_from_messages(self, messages: List[BaseMessage]) -> int:
         token_num_api = self.rest_api + '/v1/token_nums'
-        messages = convert_message_to_dict(messages)
+        messages = [convert_message_to_dict(m) for m in messages]
         payload = {
             "model": self.model_name,
             "prompt": "",

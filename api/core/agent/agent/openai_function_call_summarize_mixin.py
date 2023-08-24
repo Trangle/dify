@@ -1,7 +1,7 @@
 from typing import cast, List
 
 from langchain.chat_models import ChatOpenAI
-from langchain.chat_models.openai import _convert_message_to_dict
+from langchain.adapters.openai import convert_message_to_dict
 from langchain.memory.summary import SummarizerMixin
 from langchain.schema import SystemMessage, HumanMessage, BaseMessage, AIMessage
 from langchain.schema.language_model import BaseLanguageModel
@@ -90,7 +90,7 @@ class OpenAIFunctionCallSummarizeMixin(BaseModel, CalcTokenMixin):
             )
         num_tokens = 0
         for m in messages:
-            message = _convert_message_to_dict(m)
+            message = convert_message_to_dict(m)
             num_tokens += tokens_per_message
             for key, value in message.items():
                 if key == "function_call":
