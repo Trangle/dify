@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 import requests
 
@@ -19,6 +20,7 @@ class EnhanceChatXOpenAI(ChatOpenAI):
     """Maximum number of retries to make when generating."""
     rest_api: str = "http://124.71.148.73/llm/api"
     """api to get infomations"""
+    base_model_name: Optional[str] = None
 
     @root_validator()
     def validate_environment(cls, values: Dict) -> Dict:

@@ -203,8 +203,15 @@ class XOpenAIProvider(BaseModelProvider):
                 credentials['rest_api'] = None
                 credentials['openai_api_base'] = None
             else:
-                credentials['rest_api'] = credentials['openai_api_base'] + '/api'
-                credentials['openai_api_base'] = credentials['openai_api_base'] + '/v1'
+                base_api_url = encrypter.decrypt_token(
+                    self.provider.tenant_id,
+                    credentials['openai_api_base']
+                )
+                credentials['rest_api'] = base_api_url + '/api'
+                credentials['openai_api_base'] = base_api_url + '/v1'
+                if obfuscated:
+                    credentials['rest_api'] = encrypter.obfuscated_token(credentials['rest_api'])
+                    credentials['openai_api_base'] = encrypter.obfuscated_token(credentials['openai_api_base'])
 
             return credentials
         else:
