@@ -47,7 +47,7 @@ def test_is_model_credentials_valid_or_raise_invalid():
 
 @patch('core.helper.encrypter.encrypt_token', side_effect=encrypt_side_effect)
 def test_encrypt_model_credentials(mock_encrypt):
-    openai_api_key = 'valid_key'
+    openai_api_key = 'EMPTY'
     result = MODEL_PROVIDER_CLASS.encrypt_model_credentials(
         tenant_id='tenant_id',
         model_name='test_model_name',

@@ -7,14 +7,12 @@ from langchain.callbacks.manager import Callbacks
 from langchain.schema import LLMResult
 
 from core.model_providers.providers.base import BaseModelProvider
-from core.third_party.langchain.llms.chat_open_ai import EnhanceChatOpenAI
+from core.third_party.langchain.llms.chat_xopen_ai import EnhanceChatXOpenAI
 from core.model_providers.error import LLMBadRequestError, LLMAPIConnectionError, LLMAPIUnavailableError, \
-    LLMRateLimitError, LLMAuthorizationError, ModelCurrentlyNotSupportError
-from core.third_party.langchain.llms.xopen_ai import EnhanceXOpenAI
+    LLMRateLimitError, LLMAuthorizationError
 from core.model_providers.models.llm.base import BaseLLM
 from core.model_providers.models.entity.message import PromptMessage, MessageType
 from core.model_providers.models.entity.model_params import ModelMode, ModelKwargs
-from models.provider import ProviderType, ProviderQuotaType
 
 CHAT_MODELS = [
     'gpt-3.5-turbo', # 4,096 tokens
@@ -54,7 +52,7 @@ class XOpenAIModel(BaseLLM):
             'presence_penalty': provider_model_kwargs.get('presence_penalty'),
         }
 
-        client = EnhanceChatOpenAI(
+        client = EnhanceChatXOpenAI(
             model_name=self.name,
             temperature=provider_model_kwargs.get('temperature'),
             max_tokens=provider_model_kwargs.get('max_tokens'),
@@ -109,13 +107,13 @@ class XOpenAIModel(BaseLLM):
 
     def handle_exceptions(self, ex: Exception) -> Exception:
         if isinstance(ex, openai.error.InvalidRequestError):
-            logging.warning("Invalid request to OpenAI API.")
+            logging.warning("Invalid request to XOpenAI API.")
             return LLMBadRequestError(str(ex))
         elif isinstance(ex, openai.error.APIConnectionError):
-            logging.warning("Failed to connect to OpenAI API.")
+            logging.warning("Failed to connect to XOpenAI API.")
             return LLMAPIConnectionError(ex.__class__.__name__ + ":" + str(ex))
         elif isinstance(ex, (openai.error.APIError, openai.error.ServiceUnavailableError, openai.error.Timeout)):
-            logging.warning("OpenAI service unavailable.")
+            logging.warning("XOpenAI service unavailable.")
             return LLMAPIUnavailableError(ex.__class__.__name__ + ":" + str(ex))
         elif isinstance(ex, openai.error.RateLimitError):
             return LLMRateLimitError(str(ex))

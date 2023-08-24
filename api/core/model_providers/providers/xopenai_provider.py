@@ -4,7 +4,6 @@ from json import JSONDecodeError
 from typing import Type, Optional
 
 from flask import current_app
-from langchain.embeddings import OpenAIEmbeddings
 from openai.error import AuthenticationError, OpenAIError
 
 import openai
@@ -12,11 +11,10 @@ import openai
 from core.helper import encrypter
 from core.model_providers.models.entity.provider import ModelFeature
 from core.model_providers.models.base import BaseProviderModel
-from core.model_providers.models.embedding.openai_embedding import OpenAIEmbedding
+from core.model_providers.models.embedding.xopenai_embedding import XOpenAIEmbedding
 from core.model_providers.models.entity.model_params import ModelKwargsRules, KwargRule, ModelType
-from core.model_providers.models.llm.openai_model import OpenAIModel
+from core.model_providers.models.llm.xopenai_model import XOpenAIModel
 from core.model_providers.providers.base import BaseModelProvider, CredentialsValidateFailedError
-from core.model_providers.providers.hosted import hosted_model_providers
 from extensions.ext_database import db
 from models.provider import ProviderType, ProviderModel
 
@@ -132,9 +130,9 @@ class XOpenAIProvider(BaseModelProvider):
         :return:
         """
         if model_type == ModelType.TEXT_GENERATION:
-            model_class = OpenAIModel
+            model_class = XOpenAIModel
         elif model_type == ModelType.EMBEDDINGS:
-            model_class = OpenAIEmbedding
+            model_class = XOpenAIEmbedding
         else:
             raise NotImplementedError
 
@@ -171,7 +169,7 @@ class XOpenAIProvider(BaseModelProvider):
         """
         Validates the given credentials.
         """
-        if 'xopenai_api_base' not in credentials:
+        if 'openai_api_base' not in credentials:
             raise CredentialsValidateFailedError('XOpenAI API Base Endpoint is required')
         
         if 'base_model_name' not in credentials:
@@ -183,8 +181,8 @@ class XOpenAIProvider(BaseModelProvider):
         try:
             credentials_kwargs = {"api_key": "EMPTY"}
 
-            if credentials.get('xopenai_api_base'):
-                credentials_kwargs['api_base'] = credentials['xopenai_api_base'] + '/v1'
+            if credentials.get('openai_api_base'):
+                credentials_kwargs['api_base'] = credentials['openai_api_base'] + '/v1'
         except (AuthenticationError, OpenAIError) as ex:
             raise CredentialsValidateFailedError(str(ex))
         
@@ -216,7 +214,7 @@ class XOpenAIProvider(BaseModelProvider):
     @classmethod
     def encrypt_provider_credentials(cls, tenant_id: str, model_name: str, model_type: ModelType,
                                   credentials: dict) -> dict:
-        credentials['xopenai_api_base'] = encrypter.encrypt_token(tenant_id, credentials['xopenai_api_base'])
+        credentials['openai_api_base'] = encrypter.encrypt_token(tenant_id, credentials['openai_api_base'])
         return credentials
 
     def get_model_credentials(self, model_name: str, model_type: ModelType, obfuscated: bool = False) -> dict:
@@ -236,58 +234,34 @@ class XOpenAIProvider(BaseModelProvider):
 
             if not provider_model.encrypted_config:
                 return {
-                    'xopenai_api_base': '',
-                    'xopenai_api_key': '',
+                    'openai_api_base': '',
+                    'openai_api_key': '',
                     'base_model_name': ''
                 }
 
             credentials = json.loads(provider_model.encrypted_config)
-            if credentials['xopenai_api_key']:
-                credentials['xopenai_api_key'] = encrypter.decrypt_token(
+            if credentials['openai_api_key']:
+                credentials['openai_api_key'] = encrypter.decrypt_token(
                     self.provider.tenant_id,
-                    credentials['xopenai_api_key']
+                    credentials['openai_api_key']
                 )
 
                 if obfuscated:
-                    credentials['xopenai_api_key'] = encrypter.obfuscated_token(credentials['xopenai_api_key'])
+                    credentials['openai_api_key'] = encrypter.obfuscated_token(credentials['openai_api_key'])
             
-            if not credentials.get('xopenai_api_base'):
-                credentials['xopenai_api_base'] = None
+            if not credentials.get('openai_api_base'):
+                credentials['openai_api_base'] = None
             else:
-                credentials['xopenai_api_base'] = credentials['xopenai_api_base'] + '/v1'
+                credentials['openai_api_base'] = credentials['openai_api_base'] + '/v1'
 
             return credentials
         else:
-            if hosted_model_providers.openai:
-                return {
-                    'xopenai_api_base': hosted_model_providers.openai.api_base,
-                    'xopenai_api_key': hosted_model_providers.openai.api_key,
-                    'base_model_name': model_name
-                }
-            else:
-                return {
-                    'xopenai_api_base': None,
-                    'xopenai_api_key': None,
-                    'base_model_name': None
-                }
+            return {
+                'openai_api_base': None,
+                'openai_api_key': None,
+                'base_model_name': None
+            }
             
-    @classmethod
-    def is_provider_type_system_supported(cls) -> bool:
-        if current_app.config['EDITION'] != 'CLOUD':
-            return False
-
-        if hosted_model_providers.openai:
-            return True
-
-        return False
-
-    def should_deduct_quota(self):
-        if hosted_model_providers.openai \
-                and hosted_model_providers.openai.quota_limit and hosted_model_providers.openai.quota_limit > 0:
-            return True
-
-        return False
-
     @classmethod
     def is_model_credentials_valid_or_raise(cls, model_name: str, model_type: ModelType, credentials: dict):
         """

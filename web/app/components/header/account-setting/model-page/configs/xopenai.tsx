@@ -1,7 +1,6 @@
 import { ProviderEnum } from '../declarations'
 import type { ProviderConfig } from '../declarations'
-import { OpenaiBlack, OpenaiText, OpenaiTransparent } from '@/app/components/base/icons/src/public/llm'
-import { IS_CE_EDITION } from '@/config'
+import { OpenaiGreen, OpenaiText, OpenaiTransparent } from '@/app/components/base/icons/src/public/llm'
 
 const config: ProviderConfig = {
   selector: {
@@ -9,7 +8,7 @@ const config: ProviderConfig = {
       'en': 'XOpenAI',
       'zh-Hans': 'XOpenAI',
     },
-    icon: <OpenaiBlack className='w-full h-full' />,
+    icon: <OpenaiGreen className='w-full h-full' />,
   },
   item: {
     key: ProviderEnum.xopenai,
@@ -17,10 +16,10 @@ const config: ProviderConfig = {
       'en': <OpenaiText className='h-5' />,
       'zh-Hans': <OpenaiText className='h-5' />,
     },
-    subTitleIcon: <OpenaiBlack className='w-6 h-6' />,
+    subTitleIcon: <OpenaiGreen className='w-6 h-6' />,
     desc: {
-      'en': 'Models provided by OpenAI Compatible API, such as vicuna-v1.5 and Qwen-XB-Chat.',
-      'zh-Hans': 'OpenAI 提供的模型，例如 vicuna-v1.5 和 Qwen-XB-Chat。',
+      'en': 'Models provided by XOpenAI Compatible API, such as vicuna-v1.5 and Qwen-XB-Chat.',
+      'zh-Hans': 'XOpenAI 提供的模型，例如 vicuna-v1.5 和 Qwen-XB-Chat。',
     },
     bgColor: 'bg-gray-200',
   },
@@ -44,7 +43,7 @@ const config: ProviderConfig = {
     validateKeys: [
       'model_name',
       'model_type',
-      'xopenai_api_base',
+      'openai_api_base',
       'base_model_name',
     ],
     fields: [
