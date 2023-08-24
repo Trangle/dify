@@ -92,6 +92,7 @@ export type ProviderConfigModal = {
   icon: ReactElement
   defaultValue?: FormValue
   validateKeys?: string[] | ((v?: FormValue) => string[])
+  filterValue?: (v?: FormValue) => FormValue
   fields: Field[]
   link: {
     href: string
