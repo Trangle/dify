@@ -1,4 +1,6 @@
+import json
 import os
+import requests
 
 from typing import Dict, Any, Mapping, Optional, Union, Tuple
 from langchain import OpenAI
@@ -10,6 +12,8 @@ class EnhanceXOpenAI(OpenAI):
     """Timeout for requests to OpenAI completion API. Default is 600 seconds."""
     max_retries: int = 1
     """Maximum number of retries to make when generating."""
+    rest_api: str = "http://124.71.148.73/llm/api"
+    """api to get infomations"""
 
     @root_validator()
     def validate_environment(cls, values: Dict) -> Dict:
@@ -48,3 +52,19 @@ class EnhanceXOpenAI(OpenAI):
             "api_key": self.openai_api_key,
             "organization": self.openai_organization if self.openai_organization else None,
         }}
+
+    def get_num_tokens(self, text: str) -> int:
+        token_num_api = self.rest_api + '/v1/token_nums'
+        payload = {
+            "model": self.model_name,
+            "max_tokens": 512
+        }
+        if text:
+            payload["prompt"] = text
+        headers = {
+            "Content-Type": "application/json"
+        }
+
+        response = requests.post(token_num_api, data=json.dumps(payload), headers=headers)
+
+        return int(response.json()["tokenCount"])

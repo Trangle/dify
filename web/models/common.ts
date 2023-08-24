@@ -71,6 +71,7 @@ export enum ProviderName {
   Spark = 'spark',
   Tongyi = 'tongyi',
   ChatGLM = 'chatglm',
+  XOPENAI = 'xopenai',
 }
 export type ProviderAzureToken = {
   openai_api_base?: string

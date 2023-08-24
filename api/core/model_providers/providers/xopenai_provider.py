@@ -3,7 +3,6 @@ import logging
 from json import JSONDecodeError
 from typing import Type, Optional
 
-from flask import current_app
 from openai.error import AuthenticationError, OpenAIError
 
 import openai
@@ -16,7 +15,7 @@ from core.model_providers.models.entity.model_params import ModelKwargsRules, Kw
 from core.model_providers.models.llm.xopenai_model import XOpenAIModel
 from core.model_providers.providers.base import BaseModelProvider, CredentialsValidateFailedError
 from extensions.ext_database import db
-from models.provider import ProviderType, ProviderModel
+from models.provider import ProviderType, ProviderModel, ProviderQuotaType
 
 
 BASE_MODELS = [
@@ -36,7 +35,7 @@ class XOpenAIProvider(BaseModelProvider):
         Returns the name of a provider.
         """
         return 'xopenai'
-
+    
     def get_supported_model_list(self, model_type: ModelType) -> list[dict]:
         # convert old provider config to provider models
         self._convert_provider_config_to_model_config()
@@ -58,7 +57,6 @@ class XOpenAIProvider(BaseModelProvider):
                 }
 
                 credentials = json.loads(provider_model.encrypted_config)
-                print(f"<<<<<<<<<<<<<<<<<<<<<{credentials}")
                 if credentials['base_model_name'] in [
                     'gpt-4',
                     'gpt-4-32k',
@@ -86,39 +84,43 @@ class XOpenAIProvider(BaseModelProvider):
                     ]
                 },
                 {
-                    'id': 'WizardLM-70B-V1.0',
-                    'name': 'WizardLM-70B-V1.0',
+                    'id': 'gpt-3.5-turbo-16k',
+                    'name': 'gpt-3.5-turbo-16k',
                     'features': [
                         ModelFeature.AGENT_THOUGHT.value
                     ]
                 },
                 {
-                    'id': 'yt-vicuna-13b',
-                    'name': 'yt-vicuna-13b',
+                    'id': 'gpt-4',
+                    'name': 'gpt-4',
                     'features': [
                         ModelFeature.AGENT_THOUGHT.value
                     ]
                 },
                 {
-                    'id': 'Qwen-7B-Chat',
-                    'name': 'Qwen-7B-Chat',
+                    'id': 'gpt-4-32k',
+                    'name': 'gpt-4-32k',
                     'features': [
                         ModelFeature.AGENT_THOUGHT.value
                     ]
                 },
+                {
+                    'id': 'text-davinci-003',
+                    'name': 'text-davinci-003',
+                }
             ]
+
+            if self.provider.provider_type == ProviderType.SYSTEM.value \
+                    and self.provider.quota_type == ProviderQuotaType.TRIAL.value:
+                models = [item for item in models if item['id'] not in ['gpt-4', 'gpt-4-32k']]
 
             return models
         elif model_type == ModelType.EMBEDDINGS:
             return [
                 {
-                    'id': 'multilingual-e5-large',
-                    'name': 'multilingual-e5-large'
-                },
-                {
-                    'id': 'bge-base-en',
-                    'name': 'bge-base-en'
-                },
+                    'id': 'text-embedding-ada-002',
+                    'name': 'text-embedding-ada-002'
+                }
             ]
         else:
             return []
@@ -167,8 +169,60 @@ class XOpenAIProvider(BaseModelProvider):
 
     @classmethod
     def is_provider_credentials_valid_or_raise(cls, model_name: str, model_type: ModelType, credentials: dict):
+        return
+            
+    @classmethod
+    def encrypt_provider_credentials(cls, tenant_id: str, credentials: dict) -> dict:
+        return {}
+
+    def get_model_credentials(self, model_name: str, model_type: ModelType, obfuscated: bool = False) -> dict:
         """
-        Validates the given credentials.
+        get credentials for llm use.
+
+        :param model_name:
+        :param model_type:
+        :param obfuscated:
+        :return:
+        """
+        if self.provider.provider_type == ProviderType.CUSTOM.value:
+            # convert old provider config to provider models
+            self._convert_provider_config_to_model_config()
+
+            provider_model = self._get_provider_model(model_name, model_type)
+
+            if not provider_model.encrypted_config:
+                return {
+                    'rest_api': '',
+                    'openai_api_base': '',
+                    'openai_api_key': '',
+                    'base_model_name': ''
+                }
+
+            credentials = json.loads(provider_model.encrypted_config)
+            if not credentials.get('openai_api_base'):
+                credentials['rest_api'] = None
+                credentials['openai_api_base'] = None
+            else:
+                credentials['rest_api'] = credentials['openai_api_base'] + '/api'
+                credentials['openai_api_base'] = credentials['openai_api_base'] + '/v1'
+
+            return credentials
+        else:
+            return {
+                'rest_api': None,
+                'openai_api_base': None,
+                'openai_api_key': None,
+                'base_model_name': None
+            }
+            
+    @classmethod
+    def is_model_credentials_valid_or_raise(cls, model_name: str, model_type: ModelType, credentials: dict):
+        """
+        check model credentials valid.
+
+        :param model_name:
+        :param model_type:
+        :param credentials:
         """
         if 'openai_api_base' not in credentials:
             raise CredentialsValidateFailedError('XOpenAI API Base Endpoint is required')
@@ -211,59 +265,6 @@ class XOpenAIProvider(BaseModelProvider):
             except Exception as e:
                 logging.exception("XOpenAI Model retrieve failed.")
                 raise e
-            
-    @classmethod
-    def encrypt_provider_credentials(cls, tenant_id: str, model_name: str, model_type: ModelType,
-                                  credentials: dict) -> dict:
-        credentials['openai_api_base'] = encrypter.encrypt_token(tenant_id, credentials['openai_api_base'])
-        return credentials
-
-    def get_model_credentials(self, model_name: str, model_type: ModelType, obfuscated: bool = False) -> dict:
-        """
-        get credentials for llm use.
-
-        :param model_name:
-        :param model_type:
-        :param obfuscated:
-        :return:
-        """
-        if self.provider.provider_type == ProviderType.CUSTOM.value:
-            # convert old provider config to provider models
-            self._convert_provider_config_to_model_config()
-
-            provider_model = self._get_provider_model(model_name, model_type)
-
-            if not provider_model.encrypted_config:
-                return {
-                    'openai_api_base': '',
-                    'openai_api_key': '',
-                    'base_model_name': ''
-                }
-
-            credentials = json.loads(provider_model.encrypted_config)
-            if not credentials.get('openai_api_base'):
-                credentials['openai_api_base'] = None
-            else:
-                credentials['openai_api_base'] = credentials['openai_api_base'] + '/v1'
-
-            return credentials
-        else:
-            return {
-                'openai_api_base': None,
-                'openai_api_key': None,
-                'base_model_name': None
-            }
-            
-    @classmethod
-    def is_model_credentials_valid_or_raise(cls, model_name: str, model_type: ModelType, credentials: dict):
-        """
-        check model credentials valid.
-
-        :param model_name:
-        :param model_type:
-        :param credentials:
-        """
-        return
 
     @classmethod
     def encrypt_model_credentials(cls, tenant_id: str, model_name: str, model_type: ModelType, credentials: dict) -> dict:
@@ -276,7 +277,8 @@ class XOpenAIProvider(BaseModelProvider):
         :param credentials:
         :return:
         """
-        return {}
+        credentials['openai_api_base'] = encrypter.encrypt_token(tenant_id, credentials['openai_api_base'])
+        return credentials
 
     def get_provider_credentials(self, obfuscated: bool = False) -> dict:
         return {}
@@ -289,6 +291,7 @@ class XOpenAIProvider(BaseModelProvider):
                 credentials = json.loads(self.provider.encrypted_config)
             except JSONDecodeError:
                 credentials = {
+                    'rest_api': '',
                     'openai_api_base': '',
                     'openai_api_key': '',
                     'base_model_name': ''
