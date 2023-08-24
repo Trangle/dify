@@ -2,8 +2,7 @@ import decimal
 import logging
 
 import openai
-import tiktoken
-from langchain.embeddings import OpenAIEmbeddings
+from core.third_party.langchain.embeddings.xopenai_embedding import XOpenAIEmbeddings
 
 from core.model_providers.error import LLMBadRequestError, LLMAuthorizationError, LLMRateLimitError, \
     LLMAPIUnavailableError, LLMAPIConnectionError
@@ -18,9 +17,12 @@ class XOpenAIEmbedding(BaseEmbedding):
             model_type=self.type
         )
 
-        client = OpenAIEmbeddings(
+        client = XOpenAIEmbeddings(
+            model=name,
             max_retries=1,
-            **self.credentials
+            openai_api_key=self.credentials.get('openai_api_key'),
+            openai_api_base=self.credentials.get('openai_api_base'),
+            rest_api=self.credentials.get('rest_api'),
         )
 
         super().__init__(model_provider, client, name)
@@ -44,12 +46,8 @@ class XOpenAIEmbedding(BaseEmbedding):
         if len(text) == 0:
             return 0
 
-        enc = tiktoken.encoding_for_model(self.credentials.get('base_model_name'))
-
-        tokenized_text = enc.encode(text)
-
         # calculate the number of tokens in the encoded text
-        return len(tokenized_text)
+        return self.client.get_num_tokens(text)
 
     def handle_exceptions(self, ex: Exception) -> Exception:
         if isinstance(ex, openai.error.InvalidRequestError):

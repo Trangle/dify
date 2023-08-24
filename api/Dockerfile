@@ -20,7 +20,8 @@ RUN apt-get update && \
 
 COPY requirements.txt /app/api/requirements.txt
 
-RUN pip install -U pip && pip install -r requirements.txt
+RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple && \
+    pip install --no-cache-dir -U pip && pip install --no-cache-dir -r requirements.txt
 
 COPY . /app/api/
 
