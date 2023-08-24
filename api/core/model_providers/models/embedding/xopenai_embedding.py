@@ -1,4 +1,5 @@
 import decimal
+import traceback
 import logging
 
 import openai
@@ -50,6 +51,7 @@ class XOpenAIEmbedding(BaseEmbedding):
         return self.client.get_num_tokens(text)
 
     def handle_exceptions(self, ex: Exception) -> Exception:
+        traceback.print_exc()
         if isinstance(ex, openai.error.InvalidRequestError):
             logging.warning("Invalid request to XOpenAI API.")
             return LLMBadRequestError(str(ex))

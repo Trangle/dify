@@ -1,5 +1,6 @@
 import decimal
 import logging
+import traceback
 from typing import List, Optional, Any
 
 import openai
@@ -106,6 +107,7 @@ class XOpenAIModel(BaseLLM):
         self.client.model_kwargs = extra_model_kwargs
 
     def handle_exceptions(self, ex: Exception) -> Exception:
+        traceback.print_exc()
         if isinstance(ex, openai.error.InvalidRequestError):
             logging.warning("Invalid request to XOpenAI API.")
             return LLMBadRequestError(str(ex))

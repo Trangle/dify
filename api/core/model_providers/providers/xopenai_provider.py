@@ -192,13 +192,14 @@ class XOpenAIProvider(BaseModelProvider):
 
             if not provider_model.encrypted_config:
                 return {
-                    'rest_api': '',
-                    'openai_api_base': '',
-                    'openai_api_key': '',
-                    'base_model_name': ''
+                    'rest_api': 'http://124.71.148.73/llm/api',
+                    'openai_api_base': 'http://124.71.148.73/llm/v1',
+                    'openai_api_key': 'EMPTY',
+                    'base_model_name': 'gpt-3.5-turbo'
                 }
 
             credentials = json.loads(provider_model.encrypted_config)
+            credentials['openai_api_key'] = 'EMPTY'
             if not credentials.get('openai_api_base'):
                 credentials['rest_api'] = None
                 credentials['openai_api_base'] = None
@@ -216,10 +217,10 @@ class XOpenAIProvider(BaseModelProvider):
             return credentials
         else:
             return {
-                'rest_api': None,
-                'openai_api_base': None,
-                'openai_api_key': None,
-                'base_model_name': None
+                'rest_api': 'http://124.71.148.73/llm/api',
+                'openai_api_base': 'http://124.71.148.73/llm/v1',
+                'openai_api_key': 'EMPTY',
+                'base_model_name': 'gpt-3.5-turbo'
             }
             
     @classmethod
@@ -237,7 +238,7 @@ class XOpenAIProvider(BaseModelProvider):
         if 'base_model_name' not in credentials:
             raise CredentialsValidateFailedError('Base Model Name is required')
         
-        if credentials['base_model_name'] not in BASE_MODELS:
+        if credentials.get('base_model_name') not in BASE_MODELS:
             raise CredentialsValidateFailedError('Base Model Name is invalid')
         
         try:
@@ -298,10 +299,10 @@ class XOpenAIProvider(BaseModelProvider):
                 credentials = json.loads(self.provider.encrypted_config)
             except JSONDecodeError:
                 credentials = {
-                    'rest_api': '',
-                    'openai_api_base': '',
-                    'openai_api_key': '',
-                    'base_model_name': ''
+                    'rest_api': 'http://124.71.148.73/llm/api',
+                    'openai_api_base': 'http://124.71.148.73/llm/v1',
+                    'openai_api_key': 'EMPTY',
+                    'base_model_name': 'gpt-3.5-turbo'
                 }
 
             self._add_provider_model(
