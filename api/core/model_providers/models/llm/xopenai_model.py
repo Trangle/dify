@@ -79,7 +79,9 @@ class XOpenAIModel(BaseLLM):
         :return:
         """
         prompts = self._get_prompt_from_messages(messages)
-        return self._client.generate([prompts], stop, callbacks)
+        if isinstance(prompts, str):
+            prompts = [prompts]
+        return self._client.generate(prompts, stop, callbacks)
 
     def get_num_tokens(self, messages: List[PromptMessage]) -> int:
         """
