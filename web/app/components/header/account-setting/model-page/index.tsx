@@ -124,6 +124,7 @@ const ModelPage = () => {
   const handleUpdateProvidersAndModelList = () => {
     updateModelList(ModelType.textGeneration)
     updateModelList(ModelType.embeddings)
+    updateModelList(ModelType.speech2text)
     mutateProviders()
   }
   const handleSave = async (originValue?: FormValue) => {
