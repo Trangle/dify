@@ -11,5 +11,6 @@
   "huggingface_hub",
   "xinference",
   "openllm",
+  "xopenai",
   "localai"
 ]
