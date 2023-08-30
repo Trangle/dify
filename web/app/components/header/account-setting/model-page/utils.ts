@@ -8,7 +8,8 @@ export const ConfigurableProviders = [
   ProviderEnum.huggingface_hub,
   ProviderEnum.xinference,
   ProviderEnum.openllm,
-  ProviderEnum.xopenai
+  ProviderEnum.xopenai,
+  ProviderEnum.localai
 ]
 
 export const validateModelProviderFn = async (providerName: ProviderEnum, v: any) => {

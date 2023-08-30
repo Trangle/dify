@@ -66,6 +66,9 @@ class ModelProviderFactory:
         elif provider_name == 'xopenai':
             from core.model_providers.providers.xopenai_provider import XOpenAIProvider
             return XOpenAIProvider
+        elif provider_name == 'localai':
+            from core.model_providers.providers.localai_provider import LocalAIProvider
+            return LocalAIProvider
         else:
             raise NotImplementedError
 

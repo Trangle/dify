@@ -11,6 +11,7 @@ import chatglm from './chatglm'
 import xinference from './xinference'
 import openllm from './openllm'
 import xopenai from './xopenai'
+import localai from './localai'
 
 export default {
   openai,
@@ -26,4 +27,5 @@ export default {
   xinference,
   openllm,
   xopenai,
+  localai,
 }

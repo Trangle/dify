@@ -42,6 +42,7 @@ export enum ProviderEnum {
   'xinference' = 'xinference',
   'openllm' = 'openllm',
   'xopenai' = 'xopenai',
+  'localai' = 'localai',
 }
 
 export type ProviderConfigItem = {
