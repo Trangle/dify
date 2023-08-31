@@ -25,6 +25,7 @@ BASE_MODELS = [
     'yt-vicuna-13b',
     'Qwen-7B-Chat',
     'Nous-Hermes-Llama2-13b',
+    'WizardCoder-Python-34B-V1.0',
     'multilingual-e5-large',
     'bge-base-en',
 ]
@@ -158,6 +159,7 @@ class XOpenAIProvider(BaseModelProvider):
             'yt-vicuna-13b': 4096,
             'Qwen-7B-Chat': 16384,
             'Nous-Hermes-Llama2-13b': 4096,
+            'WizardCoder-Python-34B-V1.0': 16384,
         }
         model_credentials = self.get_model_credentials(model_name, model_type)
         return ModelKwargsRules(
@@ -345,6 +347,13 @@ class XOpenAIProvider(BaseModelProvider):
                 provider_credentials=credentials
             )
 
+            self._add_provider_model(
+                model_name='WizardCoder-Python-34B-V1.0',
+                model_type=ModelType.TEXT_GENERATION,
+                provider_credentials=credentials
+            )
+
+            
             self._add_provider_model(
                 model_name='multilingual-e5-large',
                 model_type=ModelType.EMBEDDINGS,

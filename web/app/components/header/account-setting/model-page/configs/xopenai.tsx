@@ -151,6 +151,13 @@ const config: ProviderConfig = {
                   'zh-Hans': 'Nous-Hermes-Llama2-13b',
                 },
               },
+              {
+                key: 'WizardCoder-Python-34B-V1.0',
+                label: {
+                  'en': 'WizardCoder-Python-34B-V1.0',
+                  'zh-Hans': 'WizardCoder-Python-34B-V1.0',
+                },
+              },
             ]
           }
           if (v.model_type === 'embeddings') {

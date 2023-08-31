@@ -22,6 +22,7 @@ CHAT_MODELS = [
     'yt-vicuna-13b', # 4,096 tokens
     'Qwen-7B-Chat', # 16384 tokens
     'Nous-Hermes-Llama2-13b', # 4,096 tokens
+    'WizardCoder-Python-34B-V1.0', # 16384 tokens
 ]
 
 MODEL_MAX_TOKENS = {
@@ -31,6 +32,7 @@ MODEL_MAX_TOKENS = {
     'yt-vicuna-13b': 4096,
     'Qwen-7B-Chat': 16384,
     'Nous-Hermes-Llama2-13b': 4096,
+    'WizardCoder-Python-34B-V1.0': 16384,
 }
 
 
