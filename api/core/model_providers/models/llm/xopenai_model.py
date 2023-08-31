@@ -18,7 +18,7 @@ from core.model_providers.models.entity.model_params import ModelMode, ModelKwar
 CHAT_MODELS = [
     'gpt-3.5-turbo', # 4,096 tokens
     'WizardLM-70B-V1.0', # 4,096 tokens
-    'airoboros-l2-7b-2.1', # 4,096 tokens
+    'airoboros-l2-70b-2.1', # 4,096 tokens
     'yt-vicuna-13b', # 4,096 tokens
     'Qwen-7B-Chat', # 16384 tokens
     'Nous-Hermes-Llama2-13b', # 4,096 tokens
@@ -27,7 +27,7 @@ CHAT_MODELS = [
 MODEL_MAX_TOKENS = {
     'gpt-3.5-turbo': 4096,
     'WizardLM-70B-V1.0': 4096,
-    'airoboros-l2-7b-2.1': 4096,
+    'airoboros-l2-70b-2.1': 4096,
     'yt-vicuna-13b': 4096,
     'Qwen-7B-Chat': 16384,
     'Nous-Hermes-Llama2-13b': 4096,

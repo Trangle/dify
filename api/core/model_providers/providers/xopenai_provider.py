@@ -21,7 +21,7 @@ from models.provider import ProviderType, ProviderModel, ProviderQuotaType
 BASE_MODELS = [
     'gpt-3.5-turbo',
     'WizardLM-70B-V1.0',
-    'airoboros-l2-7b-2.1',
+    'airoboros-l2-70b-2.1',
     'yt-vicuna-13b',
     'Qwen-7B-Chat',
     'Nous-Hermes-Llama2-13b',
@@ -154,7 +154,7 @@ class XOpenAIProvider(BaseModelProvider):
         model_max_tokens = {
             'gpt-3.5-turbo': 4096,
             'WizardLM-70B-V1.0': 4096,
-            'airoboros-l2-7b-2.1': 4096,
+            'airoboros-l2-70b-2.1': 4096,
             'yt-vicuna-13b': 4096,
             'Qwen-7B-Chat': 16384,
             'Nous-Hermes-Llama2-13b': 4096,
@@ -322,7 +322,7 @@ class XOpenAIProvider(BaseModelProvider):
             )
 
             self._add_provider_model(
-                model_name='airoboros-l2-7b-2.1',
+                model_name='airoboros-l2-70b-2.1',
                 model_type=ModelType.TEXT_GENERATION,
                 provider_credentials=credentials
             )

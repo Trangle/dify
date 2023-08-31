@@ -124,10 +124,10 @@ const config: ProviderConfig = {
                 },
               },
               {
-                key: 'airoboros-l2-7b-2.1',
+                key: 'airoboros-l2-70b-2.1',
                 label: {
-                  'en': 'airoboros-l2-7b-2.1',
-                  'zh-Hans': 'airoboros-l2-7b-2.1',
+                  'en': 'airoboros-l2-70b-2.1',
+                  'zh-Hans': 'airoboros-l2-70b-2.1',
                 },
               },
               {
