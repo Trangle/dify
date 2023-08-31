@@ -124,6 +124,13 @@ const config: ProviderConfig = {
                 },
               },
               {
+                key: 'airoboros-l2-7b-2.1',
+                label: {
+                  'en': 'airoboros-l2-7b-2.1',
+                  'zh-Hans': 'airoboros-l2-7b-2.1',
+                },
+              },
+              {
                 key: 'yt-vicuna-13b',
                 label: {
                   'en': 'yt-vicuna-13b',
@@ -135,6 +142,13 @@ const config: ProviderConfig = {
                 label: {
                   'en': 'Qwen-7B-Chat',
                   'zh-Hans': 'Qwen-7B-Chat',
+                },
+              },
+              {
+                key: 'Nous-Hermes-Llama2-13b',
+                label: {
+                  'en': 'Nous-Hermes-Llama2-13b',
+                  'zh-Hans': 'Nous-Hermes-Llama2-13b',
                 },
               },
             ]
