@@ -9,7 +9,8 @@ RUN apt-get update \
 COPY requirements.txt /requirements.txt
 
 RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple && \
-    pip install --no-cache-dir -U pip && pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir -U pip && \
+    pip install --prefix=/pkg --no-cache-dir -r requirements.txt
 
 # build stage
 FROM python:3.10-slim AS builder
@@ -35,7 +36,8 @@ RUN apt-get update \
 COPY --from=base /pkg /usr/local
 COPY . /app/api/
 
-RUN python -c "from transformers import GPT2TokenizerFast; GPT2TokenizerFast.from_pretrained('gpt2')"
+# RUN python -c "from transformers import GPT2TokenizerFast; GPT2TokenizerFast.from_pretrained('gpt2')"
+RUN python -c "from transformers import GPT2TokenizerFast"
 ENV TRANSFORMERS_OFFLINE true
 
 COPY docker/entrypoint.sh /entrypoint.sh
