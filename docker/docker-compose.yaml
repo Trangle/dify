@@ -2,7 +2,7 @@ version: '3.1'
 services:
   # API service
   api:
-    image: langgenius/dify-api:0.3.19
+    image: langgenius/dify-api:0.3.22
     restart: always
     networks:
       - yutang
@@ -126,7 +126,7 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: langgenius/dify-api:0.3.19
+    image: langgenius/dify-api:0.3.22
     restart: always
     networks:
       - yutang
@@ -180,7 +180,7 @@ services:
 
   # Frontend web application.
   web:
-    image: langgenius/dify-web:0.3.19
+    image: langgenius/dify-web:0.3.22
     restart: always
     networks:
       - yutang
@@ -214,6 +214,11 @@ services:
       - ./volumes/db/data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
 
   # The redis cache.
   redis:
