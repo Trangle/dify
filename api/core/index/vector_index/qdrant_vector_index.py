@@ -2,7 +2,7 @@ import os
 from typing import Optional, Any, List, cast
 
 import qdrant_client
-from langchain.embeddings.base import Embeddings
+from langchain.schema.embeddings import Embeddings
 from langchain.schema import Document, BaseRetriever
 from langchain.vectorstores import VectorStore
 from pydantic import BaseModel

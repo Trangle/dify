@@ -2,7 +2,7 @@ from typing import Optional, cast
 
 import requests
 import weaviate
-from langchain.embeddings.base import Embeddings
+from langchain.schema.embeddings import Embeddings
 from langchain.schema import Document, BaseRetriever
 from langchain.vectorstores import VectorStore
 from pydantic import BaseModel, root_validator

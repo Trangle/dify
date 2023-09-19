@@ -4,7 +4,7 @@ from typing import List
 
 import numpy as np
 from flask import current_app
-from langchain.embeddings.base import Embeddings
+from langchain.schema.embeddings import Embeddings
 from langchain.schema import Document
 from sklearn.manifold import TSNE
 

@@ -3,7 +3,7 @@ import logging
 from abc import abstractmethod
 from typing import List, Any, cast
 
-from langchain.embeddings.base import Embeddings
+from langchain.schema.embeddings import Embeddings
 from langchain.schema import Document, BaseRetriever
 from langchain.vectorstores import VectorStore
 from weaviate import UnexpectedStatusCodeException

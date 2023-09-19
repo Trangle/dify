@@ -1,6 +1,6 @@
 from typing import Optional, cast
 
-from langchain.embeddings.base import Embeddings
+from langchain.schema.embeddings import Embeddings
 from langchain.schema import Document, BaseRetriever
 from langchain.vectorstores import VectorStore, milvus
 from pydantic import BaseModel, root_validator
