@@ -2,7 +2,8 @@ import logging
 from typing import List
 
 import numpy as np
-from langchain.embeddings.base import Embeddings
+# from langchain.embeddings.fake import Embeddings, FakeEmbeddings
+from langchain.schema.embeddings import Embeddings
 from sqlalchemy.exc import IntegrityError
 
 from core.model_providers.models.embedding.base import BaseEmbedding
