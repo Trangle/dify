@@ -43,6 +43,7 @@ export enum ProviderEnum {
   'openllm' = 'openllm',
   'xopenai' = 'xopenai',
   'localai' = 'localai',
+  'zhipuai' = 'zhipuai',
 }
 
 export type ProviderConfigItem = {
