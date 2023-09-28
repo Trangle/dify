@@ -4,7 +4,7 @@ import numpy as np
 
 from pydantic import BaseModel, Extra, root_validator
 
-from langchain.embeddings.base import Embeddings
+from langchain.schema.embeddings import Embeddings
 from langchain.utils import get_from_dict_or_env
 from huggingface_hub import InferenceClient
 
