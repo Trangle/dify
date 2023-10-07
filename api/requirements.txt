@@ -53,3 +53,4 @@ xinference==0.4.2
 safetensors==0.3.2
 zhipuai==1.0.7
 fschat[model_worker,webui]
+werkzeug==2.3.7

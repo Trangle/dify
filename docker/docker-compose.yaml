@@ -2,7 +2,7 @@ version: '3.1'
 services:
   # API service
   api:
-    image: langgenius/dify-api:0.3.23
+    image: langgenius/dify-api:0.3.24
     restart: always
     networks:
       - yutang
@@ -113,7 +113,7 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: langgenius/dify-api:0.3.23
+    image: langgenius/dify-api:0.3.24
     restart: always
     networks:
       - yutang
@@ -167,7 +167,7 @@ services:
 
   # Frontend web application.
   web:
-    image: langgenius/dify-web:0.3.23
+    image: langgenius/dify-web:0.3.24
     restart: always
     networks:
       - yutang
