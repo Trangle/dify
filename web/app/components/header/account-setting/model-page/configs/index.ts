@@ -13,6 +13,7 @@ import openllm from './openllm'
 import xopenai from './xopenai'
 import localai from './localai'
 import zhipuai from './zhipuai'
+import baichuan from './baichuan'
 
 export default {
   openai,
@@ -30,4 +31,5 @@ export default {
   xopenai,
   localai,
   zhipuai,
+  baichuan,
 }
