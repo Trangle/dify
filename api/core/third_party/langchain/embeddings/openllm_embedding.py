@@ -4,7 +4,7 @@ from typing import Any, List, Optional
 import requests
 from pydantic import BaseModel, Extra
 
-from langchain.embeddings.base import Embeddings
+from langchain.schema.embeddings import Embeddings
 
 
 class OpenLLMEmbeddings(BaseModel, Embeddings):
