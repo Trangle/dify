@@ -1,7 +1,7 @@
 from typing import Dict, Optional, List, Any
 
 from huggingface_hub import HfApi, InferenceApi
-from langchain import HuggingFaceHub
+from langchain.llms.huggingface_hub import HuggingFaceHub
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.huggingface_hub import VALID_TASKS
 from pydantic import root_validator

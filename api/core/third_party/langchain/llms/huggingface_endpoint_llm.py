@@ -3,7 +3,7 @@ from typing import Dict, Any, Optional, List, Iterable, Iterator
 from huggingface_hub import InferenceClient
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.embeddings.huggingface_hub import VALID_TASKS
-from langchain.llms import HuggingFaceEndpoint
+from langchain.llms.huggingface_endpoint import HuggingFaceEndpoint
 from langchain.llms.utils import enforce_stop_tokens
 from pydantic import root_validator
 

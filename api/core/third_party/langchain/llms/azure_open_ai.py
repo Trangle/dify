@@ -1,7 +1,7 @@
 from typing import Dict, Any, Mapping, Optional, List, Union, Tuple
 
 from langchain.callbacks.manager import CallbackManagerForLLMRun
-from langchain.llms import AzureOpenAI
+from langchain.llms.openai import AzureOpenAI
 from langchain.llms.openai import _streaming_response_template, completion_with_retry, _update_response, \
     update_token_usage
 from langchain.schema import LLMResult

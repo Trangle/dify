@@ -1,7 +1,7 @@
 from typing import Dict, Any, List, Optional
 
 from langchain.callbacks.manager import CallbackManagerForLLMRun
-from langchain.llms import Tongyi
+from langchain.llms.tongyi import Tongyi
 from langchain.llms.tongyi import generate_with_retry, stream_generate_with_retry
 from langchain.schema import Generation, LLMResult
 
