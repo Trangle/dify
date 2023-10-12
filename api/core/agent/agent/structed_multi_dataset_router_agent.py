@@ -1,7 +1,7 @@
 import re
 from typing import List, Tuple, Any, Union, Sequence, Optional, cast
 
-from langchain import BasePromptTemplate
+from langchain.schema import BasePromptTemplate
 from langchain.agents import StructuredChatAgent, AgentOutputParser, Agent
 from langchain.agents.structured_chat.base import HUMAN_MESSAGE_TEMPLATE
 from langchain.callbacks.base import BaseCallbackManager

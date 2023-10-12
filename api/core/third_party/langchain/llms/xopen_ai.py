@@ -3,7 +3,7 @@ import os
 import requests
 
 from typing import Dict, Any, Mapping, Optional, Union, Tuple
-from langchain import OpenAI
+from langchain.llms.openai import OpenAI
 from pydantic import root_validator
 
 

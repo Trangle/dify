@@ -1,11 +1,11 @@
 from typing import List, Tuple, Any, Union, Sequence, Optional
 
 from langchain.agents import OpenAIFunctionsAgent, BaseSingleActionAgent
-from langchain.agents.openai_functions_agent.base import _parse_ai_message, \
-    _format_intermediate_steps
+from langchain.agents.openai_functions_agent.base import OpenAIFunctionsAgentOutputParser, \
+    format_to_openai_functions
 from langchain.callbacks.base import BaseCallbackManager
 from langchain.callbacks.manager import Callbacks
-from langchain.chat_models.openai import _convert_message_to_dict, _import_tiktoken
+from langchain.chat_models.openai import convert_message_to_dict, _import_tiktoken
 from langchain.memory.prompt import SUMMARY_PROMPT
 from langchain.prompts.chat import BaseMessagePromptTemplate
 from langchain.schema import AgentAction, AgentFinish, SystemMessage, AIMessage, HumanMessage, BaseMessage, \
@@ -105,7 +105,7 @@ class AutoSummarizingOpenAIFunctionCallAgent(OpenAIFunctionsAgent, CalcTokenMixi
         Returns:
             Action specifying what tool to use.
         """
-        agent_scratchpad = _format_intermediate_steps(intermediate_steps)
+        agent_scratchpad = format_to_openai_functions(intermediate_steps)
         selected_inputs = {
             k: kwargs[k] for k in self.prompt.input_variables if k != "agent_scratchpad"
         }
@@ -131,7 +131,7 @@ class AutoSummarizingOpenAIFunctionCallAgent(OpenAIFunctionsAgent, CalcTokenMixi
                 'function_call': result.function_call
             }
         )
-        agent_decision = _parse_ai_message(ai_message)
+        agent_decision = OpenAIFunctionsAgentOutputParser._parse_ai_message(ai_message)
 
         if isinstance(agent_decision, AgentAction) and agent_decision.tool == 'dataset':
             tool_inputs = agent_decision.tool_input
@@ -248,7 +248,7 @@ class AutoSummarizingOpenAIFunctionCallAgent(OpenAIFunctionsAgent, CalcTokenMixi
             )
         num_tokens = 0
         for m in messages:
-            message = _convert_message_to_dict(m)
+            message = convert_message_to_dict(m)
             num_tokens += tokens_per_message
             for key, value in message.items():
                 if key == "function_call":

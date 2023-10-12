@@ -1,7 +1,7 @@
 import os
 
 from typing import Dict, Any, Mapping, Optional, Union, Tuple, List, Iterator
-from langchain import OpenAI
+from langchain.llms.openai import OpenAI
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.openai import completion_with_retry, _stream_response_to_generation_chunk
 from langchain.schema.output import GenerationChunk

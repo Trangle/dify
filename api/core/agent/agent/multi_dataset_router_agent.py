@@ -2,7 +2,7 @@ import json
 from typing import Tuple, List, Any, Union, Sequence, Optional, cast
 
 from langchain.agents import OpenAIFunctionsAgent, BaseSingleActionAgent
-from langchain.agents.openai_functions_agent.base import _format_intermediate_steps, _parse_ai_message
+from langchain.agents.openai_functions_agent.base import format_to_openai_functions, OpenAIFunctionsAgentOutputParser
 from langchain.callbacks.base import BaseCallbackManager
 from langchain.callbacks.manager import Callbacks
 from langchain.prompts.chat import BaseMessagePromptTemplate
@@ -99,7 +99,7 @@ class MultiDatasetRouterAgent(OpenAIFunctionsAgent):
         Returns:
             Action specifying what tool to use.
         """
-        agent_scratchpad = _format_intermediate_steps(intermediate_steps)
+        agent_scratchpad = format_to_openai_functions(intermediate_steps)
         selected_inputs = {
             k: kwargs[k] for k in self.prompt.input_variables if k != "agent_scratchpad"
         }
@@ -119,7 +119,7 @@ class MultiDatasetRouterAgent(OpenAIFunctionsAgent):
             }
         )
 
-        agent_decision = _parse_ai_message(ai_message)
+        agent_decision = OpenAIFunctionsAgentOutputParser._parse_ai_message(ai_message)
         return agent_decision
 
     async def aplan(
