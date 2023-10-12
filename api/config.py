@@ -181,7 +181,7 @@ class Config:
         self.CELERY_BACKEND = get_env('CELERY_BACKEND')
         self.CELERY_RESULT_BACKEND = 'db+{}'.format(self.SQLALCHEMY_DATABASE_URI) \
             if self.CELERY_BACKEND == 'database' else self.CELERY_BROKER_URL
-        self.BROKER_USE_SSL = self.CELERY_BROKER_URL.startswith('rediss://')
+        self.BROKER_USE_SSL = self.CELERY_BROKER_URL.startswith('redis://')
 
         # hosted provider credentials
         self.HOSTED_OPENAI_ENABLED = get_bool_env('HOSTED_OPENAI_ENABLED')
