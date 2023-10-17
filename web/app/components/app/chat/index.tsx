@@ -1,5 +1,5 @@
 'use client'
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useContext } from 'use-context-selector'
 import cn from 'classnames'
@@ -49,10 +49,11 @@ export type IChatProps = {
   suggestionList?: string[]
   isShowSpeechToText?: boolean
   isShowCitation?: boolean
-  answerIconClassName?: string
+  answerIcon?: ReactNode
   isShowConfigElem?: boolean
   dataSets?: DataSet[]
   isShowCitationHitInfo?: boolean
+  isShowPromptLog?: boolean
 }
 
 const Chat: FC<IChatProps> = ({
@@ -77,10 +78,11 @@ const Chat: FC<IChatProps> = ({
   suggestionList,
   isShowSpeechToText,
   isShowCitation,
-  answerIconClassName,
+  answerIcon,
   isShowConfigElem,
   dataSets,
   isShowCitationHitInfo,
+  isShowPromptLog,
 }) => {
   const { t } = useTranslation()
   const { notify } = useContext(ToastContext)
@@ -177,7 +179,7 @@ const Chat: FC<IChatProps> = ({
               onSubmitAnnotation={onSubmitAnnotation}
               displayScene={displayScene ?? 'web'}
               isResponsing={isResponsing && isLast}
-              answerIconClassName={answerIconClassName}
+              answerIcon={answerIcon}
               thoughts={thoughts}
               citation={citation}
               isThinking={isThinking}
@@ -186,7 +188,18 @@ const Chat: FC<IChatProps> = ({
               isShowCitationHitInfo={isShowCitationHitInfo}
             />
           }
-          return <Question key={item.id} id={item.id} content={item.content} more={item.more} useCurrentUserAvatar={useCurrentUserAvatar} />
+          return (
+            <Question
+              key={item.id}
+              id={item.id}
+              content={item.content}
+              more={item.more}
+              useCurrentUserAvatar={useCurrentUserAvatar}
+              item={item}
+              isShowPromptLog={isShowPromptLog}
+              isResponsing={isResponsing}
+            />
+          )
         })}
       </div>
       {
