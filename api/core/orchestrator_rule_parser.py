@@ -1,6 +1,6 @@
 from typing import Optional
 
-from langchain import WikipediaAPIWrapper
+from langchain.utilities import WikipediaAPIWrapper
 from langchain.callbacks.manager import Callbacks
 from langchain.memory.chat_memory import BaseChatMemory
 from langchain.tools import BaseTool, Tool, WikipediaQueryRun

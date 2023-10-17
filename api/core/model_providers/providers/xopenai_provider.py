@@ -11,7 +11,7 @@ from core.helper import encrypter
 from core.model_providers.models.entity.provider import ModelFeature
 from core.model_providers.models.base import BaseProviderModel
 from core.model_providers.models.embedding.xopenai_embedding import XOpenAIEmbedding
-from core.model_providers.models.entity.model_params import ModelKwargsRules, KwargRule, ModelType
+from core.model_providers.models.entity.model_params import ModelKwargsRules, KwargRule, ModelType, ModelMode
 from core.model_providers.models.llm.xopenai_model import XOpenAIModel
 from core.model_providers.providers.base import BaseModelProvider, CredentialsValidateFailedError
 from extensions.ext_database import db
@@ -82,6 +82,7 @@ class XOpenAIProvider(BaseModelProvider):
                 {
                     'id': 'gpt-3.5-turbo',
                     'name': 'gpt-3.5-turbo',
+                    'mode': ModelMode.CHAT.value,
                     'features': [
                         ModelFeature.AGENT_THOUGHT.value
                     ]
@@ -89,6 +90,7 @@ class XOpenAIProvider(BaseModelProvider):
                 {
                     'id': 'gpt-3.5-turbo-16k',
                     'name': 'gpt-3.5-turbo-16k',
+                    'mode': ModelMode.CHAT.value,
                     'features': [
                         ModelFeature.AGENT_THOUGHT.value
                     ]
@@ -96,6 +98,7 @@ class XOpenAIProvider(BaseModelProvider):
                 {
                     'id': 'gpt-4',
                     'name': 'gpt-4',
+                    'mode': ModelMode.CHAT.value,
                     'features': [
                         ModelFeature.AGENT_THOUGHT.value
                     ]
@@ -103,6 +106,7 @@ class XOpenAIProvider(BaseModelProvider):
                 {
                     'id': 'gpt-4-32k',
                     'name': 'gpt-4-32k',
+                    'mode': ModelMode.CHAT.value,
                     'features': [
                         ModelFeature.AGENT_THOUGHT.value
                     ]
@@ -110,6 +114,7 @@ class XOpenAIProvider(BaseModelProvider):
                 {
                     'id': 'text-davinci-003',
                     'name': 'text-davinci-003',
+                    'mode': ModelMode.COMPLETION.value,
                 }
             ]
 
@@ -127,6 +132,10 @@ class XOpenAIProvider(BaseModelProvider):
             ]
         else:
             return []
+    
+    def _get_text_generation_model_mode(self, model_name) -> str:
+        # TODO: add instruct models
+        return ModelMode.CHAT.value
 
     def get_model_class(self, model_type: ModelType) -> Type[BaseProviderModel]:
         """
