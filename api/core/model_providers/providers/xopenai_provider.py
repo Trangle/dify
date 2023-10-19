@@ -20,12 +20,9 @@ from models.provider import ProviderType, ProviderModel, ProviderQuotaType
 
 BASE_MODELS = [
     'gpt-3.5-turbo',
-    'WizardLM-70B-V1.0',
-    'airoboros-l2-70b-2.1',
-    'yt-vicuna-13b',
-    'Qwen-7B-Chat',
-    'Nous-Hermes-Llama2-13b',
-    'WizardCoder-Python-34B-V1.0',
+    'yt-chat-v010', # 4096 tokens
+    'pygmalion-2-7b', # 4096 tokens
+    'Qwen-Chat', # 16384 tokens
     'multilingual-e5-large',
     'bge-base-en',
 ]
@@ -163,12 +160,9 @@ class XOpenAIProvider(BaseModelProvider):
         """
         model_max_tokens = {
             'gpt-3.5-turbo': 4096,
-            'WizardLM-70B-V1.0': 4096,
-            'airoboros-l2-70b-2.1': 4096,
-            'yt-vicuna-13b': 4096,
-            'Qwen-7B-Chat': 16384,
-            'Nous-Hermes-Llama2-13b': 4096,
-            'WizardCoder-Python-34B-V1.0': 16384,
+            'yt-chat-v010': 4096,
+            'pygmalion-2-7b': 4096,
+            'Qwen-Chat': 16384,
         }
         model_credentials = self.get_model_credentials(model_name, model_type)
         return ModelKwargsRules(
@@ -327,42 +321,23 @@ class XOpenAIProvider(BaseModelProvider):
             )
 
             self._add_provider_model(
-                model_name='WizardLM-70B-V1.0',
+                model_name='yt-chat-v010',
                 model_type=ModelType.TEXT_GENERATION,
                 provider_credentials=credentials
             )
 
             self._add_provider_model(
-                model_name='airoboros-l2-70b-2.1',
+                model_name='pygmalion-2-7b',
                 model_type=ModelType.TEXT_GENERATION,
                 provider_credentials=credentials
             )
 
             self._add_provider_model(
-                model_name='yt-vicuna-13b',
+                model_name='Qwen-Chat',
                 model_type=ModelType.TEXT_GENERATION,
                 provider_credentials=credentials
             )
 
-            self._add_provider_model(
-                model_name='Qwen-7B-Chat',
-                model_type=ModelType.TEXT_GENERATION,
-                provider_credentials=credentials
-            )
-
-            self._add_provider_model(
-                model_name='Nous-Hermes-Llama2-13b',
-                model_type=ModelType.TEXT_GENERATION,
-                provider_credentials=credentials
-            )
-
-            self._add_provider_model(
-                model_name='WizardCoder-Python-34B-V1.0',
-                model_type=ModelType.TEXT_GENERATION,
-                provider_credentials=credentials
-            )
-
-            
             self._add_provider_model(
                 model_name='multilingual-e5-large',
                 model_type=ModelType.EMBEDDINGS,

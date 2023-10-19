@@ -117,45 +117,24 @@ const config: ProviderConfig = {
                 },
               },
               {
-                key: 'WizardLM-70B-V1.0',
+                key: 'yt-chat-v010',
                 label: {
-                  'en': 'WizardLM-70B-V1.0',
-                  'zh-Hans': 'WizardLM-70B-V1.0',
+                  'en': 'yt-chat-v010',
+                  'zh-Hans': 'yt-chat-v010',
                 },
               },
               {
-                key: 'airoboros-l2-70b-2.1',
+                key: 'pygmalion-2-7b',
                 label: {
-                  'en': 'airoboros-l2-70b-2.1',
-                  'zh-Hans': 'airoboros-l2-70b-2.1',
+                  'en': 'pygmalion-2-7b',
+                  'zh-Hans': 'pygmalion-2-7b',
                 },
               },
               {
-                key: 'yt-vicuna-13b',
+                key: 'Qwen-Chat',
                 label: {
-                  'en': 'yt-vicuna-13b',
-                  'zh-Hans': 'yt-vicuna-13b',
-                },
-              },
-              {
-                key: 'Qwen-7B-Chat',
-                label: {
-                  'en': 'Qwen-7B-Chat',
-                  'zh-Hans': 'Qwen-7B-Chat',
-                },
-              },
-              {
-                key: 'Nous-Hermes-Llama2-13b',
-                label: {
-                  'en': 'Nous-Hermes-Llama2-13b',
-                  'zh-Hans': 'Nous-Hermes-Llama2-13b',
-                },
-              },
-              {
-                key: 'WizardCoder-Python-34B-V1.0',
-                label: {
-                  'en': 'WizardCoder-Python-34B-V1.0',
-                  'zh-Hans': 'WizardCoder-Python-34B-V1.0',
+                  'en': 'Qwen-Chat',
+                  'zh-Hans': 'Qwen-Chat',
                 },
               },
             ]
