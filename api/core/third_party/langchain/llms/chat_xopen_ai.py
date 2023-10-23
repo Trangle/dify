@@ -18,7 +18,7 @@ class EnhanceChatXOpenAI(ChatOpenAI):
     """Timeout for requests to OpenAI completion API. Default is 600 seconds."""
     max_retries: int = 1
     """Maximum number of retries to make when generating."""
-    rest_api: str = "http://124.71.148.73/llm/api"
+    rest_api: str = "http://123.57.78.136/emb/api"
     """api to get infomations"""
     base_model_name: Optional[str] = None
 

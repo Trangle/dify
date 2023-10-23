@@ -13,7 +13,7 @@ from langchain.embeddings.openai import embed_with_retry, async_embed_with_retry
 logger = logging.getLogger(__name__)
 
 class XOpenAIEmbeddings(OpenAIEmbeddings):
-    rest_api: str = "http://124.71.148.73/llm/api"
+    rest_api: str = "http://123.57.78.136/emb/api"
     """api to get infomations"""
 
     # please refer to

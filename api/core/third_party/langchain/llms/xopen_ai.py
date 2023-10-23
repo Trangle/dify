@@ -12,7 +12,7 @@ class EnhanceXOpenAI(OpenAI):
     """Timeout for requests to OpenAI completion API. Default is 600 seconds."""
     max_retries: int = 1
     """Maximum number of retries to make when generating."""
-    rest_api: str = "http://124.71.148.73/llm/api"
+    rest_api: str = "http://123.57.78.136/emb/api"
     """api to get infomations"""
     base_model_name: Optional[str] = None
 
@@ -38,7 +38,7 @@ class EnhanceXOpenAI(OpenAI):
     def _invocation_params(self) -> Dict[str, Any]:
         return {**super()._invocation_params, **{
             "api_type": 'openai',
-            "api_base": self.openai_api_base, # "http://124.71.148.73/llm/v1"
+            "api_base": self.openai_api_base, # "http://123.57.78.136/emb/v1"
             "api_version": None,
             "api_key": self.openai_api_key,
             "organization": self.openai_organization if self.openai_organization else None,
@@ -48,7 +48,7 @@ class EnhanceXOpenAI(OpenAI):
     def _identifying_params(self) -> Mapping[str, Any]:
         return {**super()._identifying_params, **{
             "api_type": 'openai',
-            "api_base": self.openai_api_base, # "http://124.71.148.73/llm/v1"
+            "api_base": self.openai_api_base, # "http://123.57.78.136/emb/v1"
             "api_version": None,
             "api_key": self.openai_api_key,
             "organization": self.openai_organization if self.openai_organization else None,
