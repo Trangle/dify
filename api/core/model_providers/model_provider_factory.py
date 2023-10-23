@@ -214,6 +214,9 @@ class ModelProviderFactory:
                                 Provider.quota_type == ProviderQuotaType.TRIAL.value
                             ).first()
 
+                        if provider.quota_limit == 0:
+                            return None
+
                         return provider
 
             no_system_provider = True
