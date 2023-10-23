@@ -201,8 +201,8 @@ class XOpenAIProvider(BaseModelProvider):
 
             if not provider_model.encrypted_config:
                 return {
-                    'rest_api': 'http://124.71.148.73/llm/api',
-                    'openai_api_base': 'http://124.71.148.73/llm/v1',
+                    'rest_api': 'http://123.57.78.136/emb/api',
+                    'openai_api_base': 'http://123.57.78.136/emb/v1',
                     'openai_api_key': 'EMPTY',
                     'base_model_name': 'gpt-3.5-turbo'
                 }
@@ -226,8 +226,8 @@ class XOpenAIProvider(BaseModelProvider):
             return credentials
         else:
             return {
-                'rest_api': 'http://124.71.148.73/llm/api',
-                'openai_api_base': 'http://124.71.148.73/llm/v1',
+                'rest_api': 'http://123.57.78.136/emb/api',
+                'openai_api_base': 'http://123.57.78.136/emb/v1',
                 'openai_api_key': 'EMPTY',
                 'base_model_name': 'gpt-3.5-turbo'
             }
@@ -308,8 +308,8 @@ class XOpenAIProvider(BaseModelProvider):
                 credentials = json.loads(self.provider.encrypted_config)
             except JSONDecodeError:
                 credentials = {
-                    'rest_api': 'http://124.71.148.73/llm/api',
-                    'openai_api_base': 'http://124.71.148.73/llm/v1',
+                    'rest_api': 'http://123.57.78.136/emb/api',
+                    'openai_api_base': 'http://123.57.78.136/emb/v1',
                     'openai_api_key': 'EMPTY',
                     'base_model_name': 'gpt-3.5-turbo'
                 }

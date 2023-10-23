@@ -52,7 +52,7 @@ class EnhanceChatXOpenAI(ChatOpenAI):
         return {
             **super()._default_params,
             "api_type": 'openai',
-            "api_base": self.openai_api_base, # "http://124.71.148.73/llm/v1"
+            "api_base": self.openai_api_base, # "http://123.57.78.136/emb/v1"
             "api_version": None,
             "api_key": self.openai_api_key,
             "organization": self.openai_organization if self.openai_organization else None,
