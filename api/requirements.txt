@@ -1,8 +1,8 @@
 coverage~=7.2.4
 beautifulsoup4==4.12.2
-flask~=2.3.2
-Flask-SQLAlchemy~=3.0.3
-SQLAlchemy~=1.4.28
+flask~=3.0.0
+Flask-SQLAlchemy~=3.1.1
+SQLAlchemy~=2.0.22
 flask-login==0.6.2
 flask-migrate~=4.0.4
 flask-restful==0.3.9
@@ -53,5 +53,5 @@ xinference-client~=0.5.4
 safetensors==0.3.2
 zhipuai==1.0.7
 fschat[model_worker,webui]
-werkzeug==2.3.7
+werkzeug==3.0.1
 pymilvus==2.3.0

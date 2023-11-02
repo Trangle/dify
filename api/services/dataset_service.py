@@ -7,7 +7,7 @@ import uuid
 from typing import Optional, List
 
 from flask import current_app
-from sqlalchemy import func
+from sqlalchemy import func, select
 
 from core.index.index import IndexBuilder
 from core.model_providers.error import LLMBadRequestError, ProviderTokenNotInitError
