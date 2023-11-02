@@ -220,6 +220,8 @@ class Completion:
         # use llm config from conversation
         memory = ReadOnlyConversationTokenDBBufferSharedMemory(
             conversation=conversation,
+            human_prefix=kwargs.get("human_prefix", "Human"),
+            ai_prefix=kwargs.get("ai_prefix", "Assistant"),
             model_instance=memory_model_instance,
             max_token_limit=kwargs.get("max_token_limit", 2048),
             memory_key=kwargs.get("memory_key", "chat_history"),

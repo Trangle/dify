@@ -5,7 +5,7 @@ from typing import List, Any, cast
 
 from langchain.schema.embeddings import Embeddings
 from langchain.schema import Document, BaseRetriever
-from langchain.vectorstores import VectorStore
+from langchain.schema.vectorstore import VectorStore
 from weaviate import UnexpectedStatusCodeException
 
 from core.index.base import BaseIndex

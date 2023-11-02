@@ -4,7 +4,7 @@ from typing import Optional, Any, List, cast
 import qdrant_client
 from langchain.schema.embeddings import Embeddings
 from langchain.schema import Document, BaseRetriever
-from langchain.vectorstores import VectorStore
+from langchain.schema.vectorstore import VectorStore
 from pydantic import BaseModel
 from qdrant_client.http.models import HnswConfigDiff
 

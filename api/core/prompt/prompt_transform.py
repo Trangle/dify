@@ -14,6 +14,7 @@ from core.model_providers.models.llm.baichuan_model import BaichuanModel
 from core.model_providers.models.llm.huggingface_hub_model import HuggingfaceHubModel
 from core.model_providers.models.llm.openllm_model import OpenLLMModel
 from core.model_providers.models.llm.xinference_model import XinferenceModel
+from core.model_providers.models.llm.xopenai_model import XOpenAIModel
 from core.prompt.prompt_builder import PromptBuilder
 from core.prompt.prompt_template import PromptTemplateParser
 
@@ -89,12 +90,22 @@ class PromptTransform:
         if isinstance(model_instance, baichuan_model_hosted_platforms) and 'baichuan' in model_instance.name.lower():
             return self._prompt_file_name_for_baichuan(mode)
 
+        yt_model_hosted_platforms = (XOpenAIModel)
+        if isinstance(model_instance, yt_model_hosted_platforms) and 'yt-chat' in model_instance.name.lower():
+            return self._prompt_file_name_for_yt(mode)
+
         # common
         if mode == 'completion':
             return 'common_completion'
         else:
             return 'common_chat'
-        
+
+    def _prompt_file_name_for_yt(self, mode: str) -> str:
+        if mode == 'completion':
+            return 'common_completion'
+        else:
+            return 'yt_chat'
+         
     def _prompt_file_name_for_baichuan(self, mode: str) -> str:
         if mode == 'completion':
             return 'baichuan_completion'

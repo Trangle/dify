@@ -4,7 +4,7 @@ import requests
 import weaviate
 from langchain.schema.embeddings import Embeddings
 from langchain.schema import Document, BaseRetriever
-from langchain.vectorstores import VectorStore
+from langchain.schema.vectorstore import VectorStore
 from pydantic import BaseModel, root_validator
 
 from core.index.base import BaseIndex
