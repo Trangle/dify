@@ -381,7 +381,10 @@ class AppDatasetJoin(db.Model):
 
     @property
     def app(self):
-        return App.query.get(self.app_id)
+        try:
+            return db.session.get(App, self.app_id)
+        except Exception as e:
+            return App.query.get(self.app_id)
 
 
 class DatasetQuery(db.Model):

@@ -10,7 +10,7 @@ from models.provider import ProviderType, Provider, ProviderModel
 PROVIDER_NAME = 'xopenai'
 MODEL_PROVIDER_CLASS = XOpenAIProvider
 VALIDATE_CREDENTIAL = {
-    'openai_api_base': 'http://124.71.148.73/llm',
+    'openai_api_base': 'http://123.57.78.136/emb',
     'openai_api_key': 'EMPTY',
     'base_model_name': 'gpt-3.5-turbo'
 }
