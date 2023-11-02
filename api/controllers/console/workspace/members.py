@@ -129,7 +129,10 @@ class MemberUpdateRoleApi(Resource):
         if new_role not in ['admin', 'normal', 'owner']:
             return {'code': 'invalid-role', 'message': 'Invalid role'}, 400
 
-        member = Account.query.get(str(member_id))
+        try:
+            member = db.session.get(Account, str(member_id))
+        except Exception as e:
+            member = Account.query.get(str(member_id))
         if not member:
             abort(404)
 

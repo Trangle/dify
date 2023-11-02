@@ -56,7 +56,10 @@ class Dataset(db.Model):
 
     @property
     def created_by_account(self):
-        return Account.query.get(self.created_by)
+        try:
+            return db.session.get(Account, self.created_by)
+        except Exception as e:
+            return Account.query.get(self.created_by)
 
     @property
     def latest_process_rule(self):
@@ -280,7 +283,10 @@ class Document(db.Model):
     @property
     def dataset_process_rule(self):
         if self.dataset_process_rule_id:
-            return DatasetProcessRule.query.get(self.dataset_process_rule_id)
+            try:
+                return db.session.get(DatasetProcessRule, self.dataset_process_rule_id)
+            except Exception as e:
+                return DatasetProcessRule.query.get(self.dataset_process_rule_id)
         return None
 
     @property

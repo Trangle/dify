@@ -71,7 +71,10 @@ class DatasetDocumentSegmentListApi(Resource):
         )
 
         if last_id is not None:
-            last_segment = DocumentSegment.query.get(str(last_id))
+            try:
+                last_segment = db.session.get(DocumentSegment, str(last_id))
+            except Exception as e:
+                last_segment = DocumentSegment.query.get(str(last_id))
             if last_segment:
                 query = query.filter(
                     DocumentSegment.position > last_segment.position)
