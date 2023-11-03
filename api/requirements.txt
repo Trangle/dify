@@ -12,7 +12,7 @@ gunicorn~=21.2.0
 gevent~=22.10.2
 langchain==0.0.327
 openai~=0.28.0
-psycopg2-binary~=2.9.6
+psycopg2-binary~=2.9.9
 pycryptodome==3.17
 python-dotenv==1.0.0
 pytest~=7.3.1
