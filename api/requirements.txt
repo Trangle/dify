@@ -1,6 +1,6 @@
 coverage~=7.2.4
 beautifulsoup4==4.12.2
-flask~=3.0.0
+flask~=2.3.3
 Flask-SQLAlchemy~=3.1.1
 SQLAlchemy~=2.0.22
 flask-login==0.6.2
