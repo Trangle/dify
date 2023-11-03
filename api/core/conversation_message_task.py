@@ -1,4 +1,5 @@
 import json
+import uuid
 import time
 from typing import Optional, Union, List
 
@@ -17,6 +18,14 @@ from extensions.ext_redis import redis_client
 from models.dataset import DatasetQuery
 from models.model import AppModelConfig, Conversation, Account, Message, EndUser, App, MessageAgentThought, \
     MessageChain, DatasetRetrieverResource
+
+
+class UUIDEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, uuid.UUID):
+            # if the obj is uuid, we simply return the value of uuid
+            return str(obj)
+        return super().default(obj)
 
 
 class ConversationMessageTask:
@@ -98,7 +107,7 @@ class ConversationMessageTask:
                 app_model_config_id=self.app_model_config.id,
                 model_provider=self.provider_name,
                 model_id=self.model_name,
-                override_model_configs=json.dumps(override_model_configs) if override_model_configs else None,
+                override_model_configs=json.dumps(override_model_configs, cls=UUIDEncoder) if override_model_configs else None,
                 mode=self.mode,
                 name='',
                 inputs=self.inputs,
@@ -118,7 +127,7 @@ class ConversationMessageTask:
             app_id=self.app.id,
             model_provider=self.provider_name,
             model_id=self.model_name,
-            override_model_configs=json.dumps(override_model_configs) if override_model_configs else None,
+            override_model_configs=json.dumps(override_model_configs, cls=UUIDEncoder) if override_model_configs else None,
             conversation_id=self.conversation.id,
             inputs=self.inputs,
             query=self.query,
@@ -186,7 +195,7 @@ class ConversationMessageTask:
         message_chain = MessageChain(
             message_id=self.message.id,
             type=chain_result.type,
-            input=json.dumps(chain_result.prompt),
+            input=json.dumps(chain_result.prompt, cls=UUIDEncoder),
             output=''
         )
 
@@ -196,7 +205,7 @@ class ConversationMessageTask:
         return message_chain
 
     def on_chain_end(self, message_chain: MessageChain, chain_result: ChainResult):
-        message_chain.output = json.dumps(chain_result.completion)
+        message_chain.output = json.dumps(chain_result.completion, cls=UUIDEncoder)
         db.session.commit()
 
         self._pub_handler.pub_chain(message_chain)
@@ -336,7 +345,7 @@ class PubHandler:
             }
         }
 
-        redis_client.publish(self._channel, json.dumps(content))
+        redis_client.publish(self._channel, json.dumps(content, cls=UUIDEncoder))
 
         if self._is_stopped():
             self.pub_end()
@@ -358,7 +367,7 @@ class PubHandler:
                 }
             }
 
-            redis_client.publish(self._channel, json.dumps(content))
+            redis_client.publish(self._channel, json.dumps(content, cls=UUIDEncoder))
 
         if self._is_stopped():
             self.pub_end()
@@ -382,7 +391,7 @@ class PubHandler:
                 }
             }
 
-            redis_client.publish(self._channel, json.dumps(content))
+            redis_client.publish(self._channel, json.dumps(content, cls=UUIDEncoder))
 
         if self._is_stopped():
             self.pub_end()
@@ -400,7 +409,7 @@ class PubHandler:
         }
         if retriever_resource:
             content['data']['retriever_resources'] = retriever_resource
-        redis_client.publish(self._channel, json.dumps(content))
+        redis_client.publish(self._channel, json.dumps(content, cls=UUIDEncoder))
 
         if self._is_stopped():
             self.pub_end()
@@ -411,7 +420,7 @@ class PubHandler:
             'event': 'end',
         }
 
-        redis_client.publish(self._channel, json.dumps(content))
+        redis_client.publish(self._channel, json.dumps(content, cls=UUIDEncoder))
 
     @classmethod
     def pub_error(cls, user: Union[Account | EndUser], task_id: str, e):
@@ -421,7 +430,7 @@ class PubHandler:
         }
 
         channel = cls.generate_channel_name(user, task_id)
-        redis_client.publish(channel, json.dumps(content))
+        redis_client.publish(channel, json.dumps(content, cls=UUIDEncoder))
 
     def _is_stopped(self):
         return redis_client.get(self._stopped_cache_key) is not None
@@ -433,7 +442,7 @@ class PubHandler:
         }
 
         channel = cls.generate_channel_name(user, task_id)
-        redis_client.publish(channel, json.dumps(content))
+        redis_client.publish(channel, json.dumps(content, cls=UUIDEncoder))
 
     @classmethod
     def stop(cls, user: Union[Account | EndUser], task_id: str):

@@ -29,7 +29,7 @@ scikit-learn==1.2.2
 sentry-sdk[flask]~=1.21.1
 jieba==0.42.1
 celery==5.3.4
-redis~=4.5.4
+redis~=5.0.1
 openpyxl==3.1.2
 chardet~=5.1.0
 docx2txt==0.8
