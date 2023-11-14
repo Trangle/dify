@@ -13,6 +13,7 @@ if not os.environ.get("DEBUG") or os.environ.get("DEBUG").lower() != 'true':
 import logging
 import json
 import threading
+import uuid
 
 from flask import Flask, request, Response
 from flask_cors import CORS
@@ -37,6 +38,14 @@ import warnings
 warnings.simplefilter("ignore", ResourceWarning)
 
 
+# 自定义的UUID到字符串的JSON编码器
+class UUIDEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, uuid.UUID):
+            return str(obj)
+        return super(UUIDEncoder, self).default(obj)
+
+
 class DifyApp(Flask):
     pass
 
@@ -55,6 +64,9 @@ config_type = os.getenv('EDITION', default='SELF_HOSTED')  # ce edition first
 def create_app(test_config=None) -> Flask:
     app = DifyApp(__name__)
 
+    # 将自定义的UUIDEncoder设置为json的默认编码器
+    json.JSONEncoder.default = UUIDEncoder().default
+    
     if test_config:
         app.config.from_object(test_config)
     else:
