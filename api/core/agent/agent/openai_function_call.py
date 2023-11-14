@@ -1,8 +1,8 @@
 from typing import List, Tuple, Any, Union, Sequence, Optional
 
 from langchain.agents import OpenAIFunctionsAgent, BaseSingleActionAgent
-from langchain.agents.openai_functions_agent.base import OpenAIFunctionsAgentOutputParser, \
-    format_to_openai_functions
+from langchain.agents.format_scratchpad import format_to_openai_functions
+from langchain.agents.openai_functions_agent.base import OpenAIFunctionsAgentOutputParser
 from langchain.callbacks.base import BaseCallbackManager
 from langchain.callbacks.manager import Callbacks
 from langchain.chat_models.openai import convert_message_to_dict, _import_tiktoken

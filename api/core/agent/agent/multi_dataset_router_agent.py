@@ -2,7 +2,8 @@ import json
 from typing import Tuple, List, Any, Union, Sequence, Optional, cast
 
 from langchain.agents import OpenAIFunctionsAgent, BaseSingleActionAgent
-from langchain.agents.openai_functions_agent.base import format_to_openai_functions, OpenAIFunctionsAgentOutputParser
+from langchain.agents.format_scratchpad import format_to_openai_functions
+from langchain.agents.openai_functions_agent.base import OpenAIFunctionsAgentOutputParser
 from langchain.callbacks.base import BaseCallbackManager
 from langchain.callbacks.manager import Callbacks
 from langchain.prompts.chat import BaseMessagePromptTemplate
