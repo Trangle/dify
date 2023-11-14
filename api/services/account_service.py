@@ -102,7 +102,7 @@ class AccountService:
     def authenticate(email: str, password: str) -> Account:
         """authenticate account with email and password"""
 
-        account = Account.query.filter_by(email=email).first()
+        account = db.session.query(Account).filter_by(email=email).first()
         if not account:
             raise AccountLoginError('Invalid email or password.')
 
@@ -174,7 +174,7 @@ class AccountService:
         """Link account integrate"""
         try:
             # Query whether there is an existing binding record for the same provider
-            account_integrate: Optional[AccountIntegrate] = AccountIntegrate.query.filter_by(account_id=account.id,
+            account_integrate: Optional[AccountIntegrate] = db.session.query(AccountIntegrate).filter_by(account_id=account.id,
                                                                                              provider=provider).first()
 
             if account_integrate:
@@ -267,7 +267,7 @@ class TenantService:
         if not tenant:
             raise TenantNotFound("Tenant not found.")
 
-        ta = TenantAccountJoin.query.filter_by(tenant_id=tenant.id, account_id=account.id).first()
+        ta = db.session.query(TenantAccountJoin).filter_by(tenant_id=tenant.id, account_id=account.id).first()
         if ta:
             tenant.role = ta.role
         else:
@@ -278,9 +278,9 @@ class TenantService:
     def switch_tenant(account: Account, tenant_id: int = None) -> None:
         """Switch the current workspace for the account"""
         if not tenant_id:
-            tenant_account_join = TenantAccountJoin.query.filter_by(account_id=account.id).first()
+            tenant_account_join = db.session.query(TenantAccountJoin).filter_by(account_id=account.id).first()
         else:
-            tenant_account_join = TenantAccountJoin.query.filter_by(account_id=account.id, tenant_id=tenant_id).first()
+            tenant_account_join = db.session.query(TenantAccountJoin).filter_by(account_id=account.id, tenant_id=tenant_id).first()
 
         # Check if the tenant exists and the account is a member of the tenant
         if not tenant_account_join:
@@ -351,7 +351,7 @@ class TenantService:
             if operator.id == member.id:
                 raise CannotOperateSelfError("Cannot operate self.")
 
-        ta_operator = TenantAccountJoin.query.filter_by(
+        ta_operator = db.session.query(TenantAccountJoin).filter_by(
             tenant_id=tenant.id,
             account_id=operator.id
         ).first()
@@ -365,7 +365,7 @@ class TenantService:
         if operator.id == account.id and TenantService.check_member_permission(tenant, operator, account, 'remove'):
             raise CannotOperateSelfError("Cannot operate self.")
 
-        ta = TenantAccountJoin.query.filter_by(tenant_id=tenant.id, account_id=account.id).first()
+        ta = db.session.query(TenantAccountJoin).filter_by(tenant_id=tenant.id, account_id=account.id).first()
         if not ta:
             raise MemberNotInTenantError("Member not in tenant.")
 
@@ -383,7 +383,7 @@ class TenantService:
         """Update member role"""
         TenantService.check_member_permission(tenant, operator, member, 'update')
 
-        target_member_join = TenantAccountJoin.query.filter_by(
+        target_member_join = db.session.query(TenantAccountJoin).filter_by(
             tenant_id=tenant.id,
             account_id=member.id
         ).first()
@@ -393,7 +393,7 @@ class TenantService:
 
         if new_role == 'owner':
             # Find the current owner and change their role to 'admin'
-            current_owner_join = TenantAccountJoin.query.filter_by(
+            current_owner_join = db.session.query(TenantAccountJoin).filter_by(
                 tenant_id=tenant.id,
                 role='owner'
             ).first()
@@ -450,7 +450,7 @@ class RegisterService:
     def invite_new_member(cls, tenant: Tenant, email: str, role: str = 'normal',
                           inviter: Account = None) -> str:
         """Invite new member"""
-        account = Account.query.filter_by(email=email).first()
+        account = db.session.query(Account).filter_by(email=email).first()
 
         if not account:
             TenantService.check_member_permission(tenant, inviter, None, 'add')
@@ -460,7 +460,7 @@ class RegisterService:
             db.session.commit()
         else:
             TenantService.check_member_permission(tenant, inviter, account, 'add')
-            ta = TenantAccountJoin.query.filter_by(
+            ta = db.session.query(TenantAccountJoin).filter_by(
                 tenant_id=tenant.id,
                 account_id=account.id
             ).first()

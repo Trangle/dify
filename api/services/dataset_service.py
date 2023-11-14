@@ -49,7 +49,7 @@ class DatasetService:
                                        Dataset.permission == 'all_team_members')
         else:
             permission_filter = Dataset.permission == 'all_team_members'
-        datasets = Dataset.query.filter(
+        datasets = db.session.query(Dataset).filter(
             db.and_(Dataset.provider == provider, Dataset.tenant_id == tenant_id, permission_filter)) \
             .order_by(Dataset.created_at.desc()) \
             .paginate(
@@ -82,15 +82,15 @@ class DatasetService:
 
     @staticmethod
     def get_datasets_by_ids(ids, tenant_id):
-        datasets = Dataset.query.filter(Dataset.id.in_(ids),
-                                        Dataset.tenant_id == tenant_id).paginate(
+        datasets = db.session.query(Dataset).filter(Dataset.id.in_(ids), 
+                                                    Dataset.tenant_id == tenant_id).paginate(
             page=1, per_page=len(ids), max_per_page=len(ids), error_out=False)
         return datasets.items, datasets.total
 
     @staticmethod
     def create_empty_dataset(tenant_id: str, name: str, indexing_technique: Optional[str], account: Account):
         # check if dataset name already exists
-        if Dataset.query.filter_by(name=name, tenant_id=tenant_id).first():
+        if db.session.query(Dataset).filter_by(name=name, tenant_id=tenant_id).first():
             raise DatasetNameDuplicateError(
                 f'Dataset with name {name} already exists.')
         embedding_model = None
@@ -111,7 +111,7 @@ class DatasetService:
 
     @staticmethod
     def get_dataset(dataset_id):
-        dataset = Dataset.query.filter_by(
+        dataset = db.session.query(Dataset).filter_by(
             id=dataset_id
         ).first()
         if dataset is None:
@@ -173,7 +173,10 @@ class DatasetService:
         filtered_data['updated_by'] = user.id
         filtered_data['updated_at'] = datetime.datetime.now()
 
-        dataset.query.filter_by(id=dataset_id).update(filtered_data)
+        # db.session.query(Dataset).filter_by(id=dataset_id).update(filtered_data)
+        for key, value in filtered_data.items():
+            setattr(dataset, key, value)
+        
 
         db.session.commit()
         if action:
@@ -212,7 +215,7 @@ class DatasetService:
 
     @staticmethod
     def get_dataset_queries(dataset_id: str, page: int, per_page: int):
-        dataset_queries = DatasetQuery.query.filter_by(dataset_id=dataset_id) \
+        dataset_queries = db.session.query(DatasetQuery).filter_by(dataset_id=dataset_id) \
             .order_by(db.desc(DatasetQuery.created_at)) \
             .paginate(
             page=page, per_page=per_page, max_per_page=100, error_out=False
@@ -221,7 +224,7 @@ class DatasetService:
 
     @staticmethod
     def get_related_apps(dataset_id: str):
-        return AppDatasetJoin.query.filter(AppDatasetJoin.dataset_id == dataset_id) \
+        return db.session.query(AppDatasetJoin).filter(AppDatasetJoin.dataset_id == dataset_id) \
             .order_by(db.desc(AppDatasetJoin.created_at)).all()
 
 
@@ -425,7 +428,7 @@ class DocumentService:
 
     @staticmethod
     def get_documents_position(dataset_id):
-        document = Document.query.filter_by(dataset_id=dataset_id).order_by(Document.position.desc()).first()
+        document = db.session.query(Document).filter_by(dataset_id=dataset_id).order_by(Document.position.desc()).first()
         if document:
             return document.position + 1
         else:
@@ -533,7 +536,7 @@ class DocumentService:
                 notion_info_list = document_data["data_source"]['info_list']['notion_info_list']
                 exist_page_ids = []
                 exist_document = dict()
-                documents = Document.query.filter_by(
+                documents = db.session.query(Document).filter_by(
                     dataset_id=dataset.id,
                     tenant_id=current_user.current_tenant_id,
                     data_source_type='notion_import',
@@ -546,7 +549,7 @@ class DocumentService:
                         exist_document[data_source_info['notion_page_id']] = document.id
                 for notion_info in notion_info_list:
                     workspace_id = notion_info['workspace_id']
-                    data_source_binding = DataSourceBinding.query.filter(
+                    data_source_binding = db.session.query(DataSourceBinding).filter(
                         db.and_(
                             DataSourceBinding.tenant_id == current_user.current_tenant_id,
                             DataSourceBinding.provider == 'notion',
@@ -610,7 +613,7 @@ class DocumentService:
 
     @staticmethod
     def get_tenant_documents_count():
-        documents_count = Document.query.filter(Document.completed_at.isnot(None),
+        documents_count = db.session.query(Document).filter(Document.completed_at.isnot(None),
                                                 Document.enabled == True,
                                                 Document.archived == False,
                                                 Document.tenant_id == current_user.current_tenant_id).count()
@@ -671,7 +674,7 @@ class DocumentService:
                 notion_info_list = document_data["data_source"]['info_list']['notion_info_list']
                 for notion_info in notion_info_list:
                     workspace_id = notion_info['workspace_id']
-                    data_source_binding = DataSourceBinding.query.filter(
+                    data_source_binding = db.session.query(DataSourceBinding).filter(
                         db.and_(
                             DataSourceBinding.tenant_id == current_user.current_tenant_id,
                             DataSourceBinding.provider == 'notion',
@@ -707,7 +710,7 @@ class DocumentService:
         update_params = {
             DocumentSegment.status: 're_segment'
         }
-        DocumentSegment.query.filter_by(document_id=document.id).update(update_params)
+        db.session.query(DocumentSegment).filter_by(document_id=document.id).update(update_params)
         db.session.commit()
         # trigger async task
         document_indexing_update_task.delay(document.dataset_id, document.id)
