@@ -177,7 +177,7 @@ class XOpenAIProvider(BaseModelProvider):
         )
 
     @classmethod
-    def is_provider_credentials_valid_or_raise(cls, model_name: str, model_type: ModelType, credentials: dict):
+    def is_provider_credentials_valid_or_raise(cls, credentials: dict):
         return
             
     @classmethod
