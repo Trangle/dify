@@ -42,7 +42,7 @@ class PassportResource(Resource):
             'sub': 'Web API Passport',
             'app_id': site.app_id,
             'app_code': app_code,
-            'end_user_id': str(end_user.id),
+            'end_user_id': end_user.id,
         }
 
         tk = PassportService().issue(payload)
