@@ -19,8 +19,8 @@ class Dataset(db.Model):
 
     INDEXING_TECHNIQUE_LIST = ['high_quality', 'economy']
 
-    id = db.Column(UUID, server_default=db.text('uuid_generate_v4()'))
-    tenant_id = db.Column(UUID, nullable=False)
+    id = db.Column(UUID(as_uuid=True), server_default=db.text('uuid_generate_v4()'))
+    tenant_id = db.Column(UUID(as_uuid=True), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=True)
     provider = db.Column(db.String(255), nullable=False,
@@ -30,15 +30,15 @@ class Dataset(db.Model):
     data_source_type = db.Column(db.String(255))
     indexing_technique = db.Column(db.String(255), nullable=True)
     index_struct = db.Column(db.Text, nullable=True)
-    created_by = db.Column(UUID, nullable=False)
+    created_by = db.Column(UUID(as_uuid=True), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False,
                            server_default=db.text('CURRENT_TIMESTAMP(0)'))
-    updated_by = db.Column(UUID, nullable=True)
+    updated_by = db.Column(UUID(as_uuid=True), nullable=True)
     updated_at = db.Column(db.DateTime, nullable=False,
                            server_default=db.text('CURRENT_TIMESTAMP(0)'))
     embedding_model = db.Column(db.String(255), nullable=True)
     embedding_model_provider = db.Column(db.String(255), nullable=True)
-    collection_binding_id = db.Column(UUID, nullable=True)
+    collection_binding_id = db.Column(UUID(as_uuid=True), nullable=True)
 
 
     @property
@@ -104,13 +104,13 @@ class DatasetProcessRule(db.Model):
         db.Index('dataset_process_rule_dataset_id_idx', 'dataset_id'),
     )
 
-    id = db.Column(UUID, nullable=False,
+    id = db.Column(UUID(as_uuid=True), nullable=False,
                    server_default=db.text('uuid_generate_v4()'))
-    dataset_id = db.Column(UUID, nullable=False)
+    dataset_id = db.Column(UUID(as_uuid=True), nullable=False)
     mode = db.Column(db.String(255), nullable=False,
                      server_default=db.text("'automatic'::character varying"))
     rules = db.Column(db.Text, nullable=True)
-    created_by = db.Column(UUID, nullable=False)
+    created_by = db.Column(UUID(as_uuid=True), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False,
                            server_default=db.text('CURRENT_TIMESTAMP(0)'))
 
@@ -154,19 +154,19 @@ class Document(db.Model):
     )
 
     # initial fields
-    id = db.Column(UUID, nullable=False,
+    id = db.Column(UUID(as_uuid=True), nullable=False,
                    server_default=db.text('uuid_generate_v4()'))
-    tenant_id = db.Column(UUID, nullable=False)
-    dataset_id = db.Column(UUID, nullable=False)
+    tenant_id = db.Column(UUID(as_uuid=True), nullable=False)
+    dataset_id = db.Column(UUID(as_uuid=True), nullable=False)
     position = db.Column(db.Integer, nullable=False)
     data_source_type = db.Column(db.String(255), nullable=False)
     data_source_info = db.Column(db.Text, nullable=True)
-    dataset_process_rule_id = db.Column(UUID, nullable=True)
+    dataset_process_rule_id = db.Column(UUID(as_uuid=True), nullable=True)
     batch = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     created_from = db.Column(db.String(255), nullable=False)
-    created_by = db.Column(UUID, nullable=False)
-    created_api_request_id = db.Column(UUID, nullable=True)
+    created_by = db.Column(UUID(as_uuid=True), nullable=False)
+    created_api_request_id = db.Column(UUID(as_uuid=True), nullable=True)
     created_at = db.Column(db.DateTime, nullable=False,
                            server_default=db.text('CURRENT_TIMESTAMP(0)'))
 
@@ -191,7 +191,7 @@ class Document(db.Model):
 
     # pause
     is_paused = db.Column(db.Boolean, nullable=True, server_default=db.text('false'))
-    paused_by = db.Column(UUID, nullable=True)
+    paused_by = db.Column(UUID(as_uuid=True), nullable=True)
     paused_at = db.Column(db.DateTime, nullable=True)
 
     # error
@@ -204,11 +204,11 @@ class Document(db.Model):
     enabled = db.Column(db.Boolean, nullable=False,
                         server_default=db.text('true'))
     disabled_at = db.Column(db.DateTime, nullable=True)
-    disabled_by = db.Column(UUID, nullable=True)
+    disabled_by = db.Column(UUID(as_uuid=True), nullable=True)
     archived = db.Column(db.Boolean, nullable=False,
                          server_default=db.text('false'))
     archived_reason = db.Column(db.String(255), nullable=True)
-    archived_by = db.Column(UUID, nullable=True)
+    archived_by = db.Column(UUID(as_uuid=True), nullable=True)
     archived_at = db.Column(db.DateTime, nullable=True)
     updated_at = db.Column(db.DateTime, nullable=False,
                            server_default=db.text('CURRENT_TIMESTAMP(0)'))
@@ -315,11 +315,11 @@ class DocumentSegment(db.Model):
     )
 
     # initial fields
-    id = db.Column(UUID, nullable=False,
+    id = db.Column(UUID(as_uuid=True), nullable=False,
                    server_default=db.text('uuid_generate_v4()'))
-    tenant_id = db.Column(UUID, nullable=False)
-    dataset_id = db.Column(UUID, nullable=False)
-    document_id = db.Column(UUID, nullable=False)
+    tenant_id = db.Column(UUID(as_uuid=True), nullable=False)
+    dataset_id = db.Column(UUID(as_uuid=True), nullable=False)
+    document_id = db.Column(UUID(as_uuid=True), nullable=False)
     position = db.Column(db.Integer, nullable=False)
     content = db.Column(db.Text, nullable=False)
     answer = db.Column(db.Text, nullable=True)
@@ -336,13 +336,13 @@ class DocumentSegment(db.Model):
     enabled = db.Column(db.Boolean, nullable=False,
                         server_default=db.text('true'))
     disabled_at = db.Column(db.DateTime, nullable=True)
-    disabled_by = db.Column(UUID, nullable=True)
+    disabled_by = db.Column(UUID(as_uuid=True), nullable=True)
     status = db.Column(db.String(255), nullable=False,
                        server_default=db.text("'waiting'::character varying"))
-    created_by = db.Column(UUID, nullable=False)
+    created_by = db.Column(UUID(as_uuid=True), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False,
                            server_default=db.text('CURRENT_TIMESTAMP(0)'))
-    updated_by = db.Column(UUID, nullable=True)
+    updated_by = db.Column(UUID(as_uuid=True), nullable=True)
     updated_at = db.Column(db.DateTime, nullable=False,
                            server_default=db.text('CURRENT_TIMESTAMP(0)'))
     indexing_at = db.Column(db.DateTime, nullable=True)
@@ -380,9 +380,9 @@ class AppDatasetJoin(db.Model):
         db.Index('app_dataset_join_app_dataset_idx', 'dataset_id', 'app_id'),
     )
 
-    id = db.Column(UUID, primary_key=True, nullable=False, server_default=db.text('uuid_generate_v4()'))
-    app_id = db.Column(UUID, nullable=False)
-    dataset_id = db.Column(UUID, nullable=False)
+    id = db.Column(UUID(as_uuid=True), primary_key=True, nullable=False, server_default=db.text('uuid_generate_v4()'))
+    app_id = db.Column(UUID(as_uuid=True), nullable=False)
+    dataset_id = db.Column(UUID(as_uuid=True), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.current_timestamp())
 
     @property
@@ -400,13 +400,13 @@ class DatasetQuery(db.Model):
         db.Index('dataset_query_dataset_id_idx', 'dataset_id'),
     )
 
-    id = db.Column(UUID, primary_key=True, nullable=False, server_default=db.text('uuid_generate_v4()'))
-    dataset_id = db.Column(UUID, nullable=False)
+    id = db.Column(UUID(as_uuid=True), primary_key=True, nullable=False, server_default=db.text('uuid_generate_v4()'))
+    dataset_id = db.Column(UUID(as_uuid=True), nullable=False)
     content = db.Column(db.Text, nullable=False)
     source = db.Column(db.String(255), nullable=False)
-    source_app_id = db.Column(UUID, nullable=True)
+    source_app_id = db.Column(UUID(as_uuid=True), nullable=True)
     created_by_role = db.Column(db.String, nullable=False)
-    created_by = db.Column(UUID, nullable=False)
+    created_by = db.Column(UUID(as_uuid=True), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.current_timestamp())
 
 
@@ -417,8 +417,8 @@ class DatasetKeywordTable(db.Model):
         db.Index('dataset_keyword_table_dataset_id_idx', 'dataset_id'),
     )
 
-    id = db.Column(UUID, primary_key=True, server_default=db.text('uuid_generate_v4()'))
-    dataset_id = db.Column(UUID, nullable=False, unique=True)
+    id = db.Column(UUID(as_uuid=True), primary_key=True, server_default=db.text('uuid_generate_v4()'))
+    dataset_id = db.Column(UUID(as_uuid=True), nullable=False, unique=True)
     keyword_table = db.Column(db.Text, nullable=False)
 
     @property
@@ -444,7 +444,7 @@ class Embedding(db.Model):
         db.UniqueConstraint('model_name', 'hash', name='embedding_hash_idx')
     )
 
-    id = db.Column(UUID, primary_key=True, server_default=db.text('uuid_generate_v4()'))
+    id = db.Column(UUID(as_uuid=True), primary_key=True, server_default=db.text('uuid_generate_v4()'))
     model_name = db.Column(db.String(40), nullable=False,
                            server_default=db.text("'text-embedding-ada-002'::character varying"))
     hash = db.Column(db.String(64), nullable=False)
@@ -466,7 +466,7 @@ class DatasetCollectionBinding(db.Model):
 
     )
 
-    id = db.Column(UUID, primary_key=True, server_default=db.text('uuid_generate_v4()'))
+    id = db.Column(UUID(as_uuid=True), primary_key=True, server_default=db.text('uuid_generate_v4()'))
     provider_name = db.Column(db.String(40), nullable=False)
     model_name = db.Column(db.String(40), nullable=False)
     collection_name = db.Column(db.String(64), nullable=False)

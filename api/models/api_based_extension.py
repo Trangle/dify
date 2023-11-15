@@ -19,8 +19,8 @@ class APIBasedExtension(db.Model):
         db.Index('api_based_extension_tenant_idx', 'tenant_id'),
     )
 
-    id = db.Column(UUID, server_default=db.text('uuid_generate_v4()'))
-    tenant_id = db.Column(UUID, nullable=False)
+    id = db.Column(UUID(as_uuid=True), server_default=db.text('uuid_generate_v4()'))
+    tenant_id = db.Column(UUID(as_uuid=True), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     api_endpoint = db.Column(db.String(255), nullable=False)
     api_key = db.Column(db.Text, nullable=False)

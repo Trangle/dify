@@ -11,11 +11,11 @@ class SavedMessage(db.Model):
         db.Index('saved_message_message_idx', 'app_id', 'message_id', 'created_by_role', 'created_by'),
     )
 
-    id = db.Column(UUID, server_default=db.text('uuid_generate_v4()'))
-    app_id = db.Column(UUID, nullable=False)
-    message_id = db.Column(UUID, nullable=False)
+    id = db.Column(UUID(as_uuid=True), server_default=db.text('uuid_generate_v4()'))
+    app_id = db.Column(UUID(as_uuid=True), nullable=False)
+    message_id = db.Column(UUID(as_uuid=True), nullable=False)
     created_by_role = db.Column(db.String(255), nullable=False, server_default=db.text("'end_user'::character varying"))
-    created_by = db.Column(UUID, nullable=False)
+    created_by = db.Column(UUID(as_uuid=True), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.text('CURRENT_TIMESTAMP(0)'))
 
     @property
@@ -30,9 +30,9 @@ class PinnedConversation(db.Model):
         db.Index('pinned_conversation_conversation_idx', 'app_id', 'conversation_id', 'created_by_role', 'created_by'),
     )
 
-    id = db.Column(UUID, server_default=db.text('uuid_generate_v4()'))
-    app_id = db.Column(UUID, nullable=False)
-    conversation_id = db.Column(UUID, nullable=False)
+    id = db.Column(UUID(as_uuid=True), server_default=db.text('uuid_generate_v4()'))
+    app_id = db.Column(UUID(as_uuid=True), nullable=False)
+    conversation_id = db.Column(UUID(as_uuid=True), nullable=False)
     created_by_role = db.Column(db.String(255), nullable=False, server_default=db.text("'end_user'::character varying"))
-    created_by = db.Column(UUID, nullable=False)
+    created_by = db.Column(UUID(as_uuid=True), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.text('CURRENT_TIMESTAMP(0)'))

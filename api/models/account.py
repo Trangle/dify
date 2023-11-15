@@ -21,7 +21,7 @@ class Account(UserMixin, db.Model):
         db.Index('account_email_idx', 'email')
     )
 
-    id = db.Column(UUID, server_default=db.text('uuid_generate_v4()'))
+    id = db.Column(UUID(as_uuid=True), server_default=db.text('uuid_generate_v4()'))
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False)
     password = db.Column(db.String(255), nullable=True)
@@ -107,7 +107,7 @@ class Tenant(db.Model):
         db.PrimaryKeyConstraint('id', name='tenant_pkey'),
     )
 
-    id = db.Column(UUID, server_default=db.text('uuid_generate_v4()'))
+    id = db.Column(UUID(as_uuid=True), server_default=db.text('uuid_generate_v4()'))
     name = db.Column(db.String(255), nullable=False)
     encrypt_public_key = db.Column(db.Text)
     plan = db.Column(db.String(255), nullable=False, server_default=db.text("'basic'::character varying"))
@@ -138,11 +138,11 @@ class TenantAccountJoin(db.Model):
         db.UniqueConstraint('tenant_id', 'account_id', name='unique_tenant_account_join')
     )
 
-    id = db.Column(UUID, server_default=db.text('uuid_generate_v4()'))
-    tenant_id = db.Column(UUID, nullable=False)
-    account_id = db.Column(UUID, nullable=False)
+    id = db.Column(UUID(as_uuid=True), server_default=db.text('uuid_generate_v4()'))
+    tenant_id = db.Column(UUID(as_uuid=True), nullable=False)
+    account_id = db.Column(UUID(as_uuid=True), nullable=False)
     role = db.Column(db.String(16), nullable=False, server_default='normal')
-    invited_by = db.Column(UUID, nullable=True)
+    invited_by = db.Column(UUID(as_uuid=True), nullable=True)
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.text('CURRENT_TIMESTAMP(0)'))
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.text('CURRENT_TIMESTAMP(0)'))
 
@@ -155,8 +155,8 @@ class AccountIntegrate(db.Model):
         db.UniqueConstraint('provider', 'open_id', name='unique_provider_open_id')
     )
 
-    id = db.Column(UUID, server_default=db.text('uuid_generate_v4()'))
-    account_id = db.Column(UUID, nullable=False)
+    id = db.Column(UUID(as_uuid=True), server_default=db.text('uuid_generate_v4()'))
+    account_id = db.Column(UUID(as_uuid=True), nullable=False)
     provider = db.Column(db.String(16), nullable=False)
     open_id = db.Column(db.String(255), nullable=False)
     encrypted_token = db.Column(db.String(255), nullable=False)

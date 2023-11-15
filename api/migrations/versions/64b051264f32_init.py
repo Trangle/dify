@@ -21,8 +21,8 @@ def upgrade():
     op.execute('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
 
     op.create_table('account_integrates',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('account_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('account_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('provider', sa.String(length=16), nullable=False),
     sa.Column('open_id', sa.String(length=255), nullable=False),
     sa.Column('encrypted_token', sa.String(length=255), nullable=False),
@@ -33,7 +33,7 @@ def upgrade():
     sa.UniqueConstraint('provider', 'open_id', name='unique_provider_open_id')
     )
     op.create_table('accounts',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('password', sa.String(length=255), nullable=True),
@@ -54,9 +54,9 @@ def upgrade():
         batch_op.create_index('account_email_idx', ['email'], unique=False)
 
     op.create_table('api_requests',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
-    sa.Column('api_token_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('api_token_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('path', sa.String(length=255), nullable=False),
     sa.Column('request', sa.Text(), nullable=True),
     sa.Column('response', sa.Text(), nullable=True),
@@ -68,9 +68,9 @@ def upgrade():
         batch_op.create_index('api_request_token_idx', ['tenant_id', 'api_token_id'], unique=False)
 
     op.create_table('api_tokens',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=True),
-    sa.Column('dataset_id', postgresql.UUID(), nullable=True),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('dataset_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('type', sa.String(length=16), nullable=False),
     sa.Column('token', sa.String(length=255), nullable=False),
     sa.Column('last_used_at', sa.DateTime(), nullable=True),
@@ -82,9 +82,9 @@ def upgrade():
         batch_op.create_index('api_token_token_idx', ['token', 'type'], unique=False)
 
     op.create_table('app_dataset_joins',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
-    sa.Column('dataset_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('dataset_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='app_dataset_join_pkey')
     )
@@ -92,8 +92,8 @@ def upgrade():
         batch_op.create_index('app_dataset_join_app_dataset_idx', ['dataset_id', 'app_id'], unique=False)
 
     op.create_table('app_model_configs',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('provider', sa.String(length=255), nullable=False),
     sa.Column('model_id', sa.String(length=255), nullable=False),
     sa.Column('configs', sa.JSON(), nullable=False),
@@ -113,13 +113,13 @@ def upgrade():
         batch_op.create_index('app_app_id_idx', ['app_id'], unique=False)
 
     op.create_table('apps',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('mode', sa.String(length=255), nullable=False),
     sa.Column('icon', sa.String(length=255), nullable=True),
     sa.Column('icon_background', sa.String(length=255), nullable=True),
-    sa.Column('app_model_config_id', postgresql.UUID(), nullable=True),
+    sa.Column('app_model_config_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('status', sa.String(length=255), server_default=sa.text("'normal'::character varying"), nullable=False),
     sa.Column('enable_site', sa.Boolean(), nullable=False),
     sa.Column('enable_api', sa.Boolean(), nullable=False),
@@ -164,9 +164,9 @@ def upgrade():
     sa.UniqueConstraint('taskset_id')
     )
     op.create_table('conversations',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
-    sa.Column('app_model_config_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('app_model_config_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('model_provider', sa.String(length=255), nullable=False),
     sa.Column('override_model_configs', sa.Text(), nullable=True),
     sa.Column('model_id', sa.String(length=255), nullable=False),
@@ -179,10 +179,10 @@ def upgrade():
     sa.Column('system_instruction_tokens', sa.Integer(), server_default=sa.text('0'), nullable=False),
     sa.Column('status', sa.String(length=255), nullable=False),
     sa.Column('from_source', sa.String(length=255), nullable=False),
-    sa.Column('from_end_user_id', postgresql.UUID(), nullable=True),
-    sa.Column('from_account_id', postgresql.UUID(), nullable=True),
+    sa.Column('from_end_user_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('from_account_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('read_at', sa.DateTime(), nullable=True),
-    sa.Column('read_account_id', postgresql.UUID(), nullable=True),
+    sa.Column('read_account_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='conversation_pkey')
@@ -191,8 +191,8 @@ def upgrade():
         batch_op.create_index('conversation_app_from_user_idx', ['app_id', 'from_source', 'from_end_user_id'], unique=False)
 
     op.create_table('dataset_keyword_tables',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('dataset_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('dataset_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('keyword_table', sa.Text(), nullable=False),
     sa.PrimaryKeyConstraint('id', name='dataset_keyword_table_pkey'),
     sa.UniqueConstraint('dataset_id')
@@ -201,11 +201,11 @@ def upgrade():
         batch_op.create_index('dataset_keyword_table_dataset_id_idx', ['dataset_id'], unique=False)
 
     op.create_table('dataset_process_rules',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('dataset_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('dataset_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('mode', sa.String(length=255), server_default=sa.text("'automatic'::character varying"), nullable=False),
     sa.Column('rules', sa.Text(), nullable=True),
-    sa.Column('created_by', postgresql.UUID(), nullable=False),
+    sa.Column('created_by', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='dataset_process_rule_pkey')
     )
@@ -213,13 +213,13 @@ def upgrade():
         batch_op.create_index('dataset_process_rule_dataset_id_idx', ['dataset_id'], unique=False)
 
     op.create_table('dataset_queries',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('dataset_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('dataset_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('content', sa.Text(), nullable=False),
     sa.Column('source', sa.String(length=255), nullable=False),
-    sa.Column('source_app_id', postgresql.UUID(), nullable=True),
+    sa.Column('source_app_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('created_by_role', sa.String(), nullable=False),
-    sa.Column('created_by', postgresql.UUID(), nullable=False),
+    sa.Column('created_by', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='dataset_query_pkey')
     )
@@ -227,8 +227,8 @@ def upgrade():
         batch_op.create_index('dataset_query_dataset_id_idx', ['dataset_id'], unique=False)
 
     op.create_table('datasets',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('provider', sa.String(length=255), server_default=sa.text("'vendor'::character varying"), nullable=False),
@@ -236,9 +236,9 @@ def upgrade():
     sa.Column('data_source_type', sa.String(length=255), nullable=True),
     sa.Column('indexing_technique', sa.String(length=255), nullable=True),
     sa.Column('index_struct', sa.Text(), nullable=True),
-    sa.Column('created_by', postgresql.UUID(), nullable=False),
+    sa.Column('created_by', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
-    sa.Column('updated_by', postgresql.UUID(), nullable=True),
+    sa.Column('updated_by', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='dataset_pkey')
     )
@@ -251,10 +251,10 @@ def upgrade():
     sa.PrimaryKeyConstraint('version', name='dify_setup_pkey')
     )
     op.create_table('document_segments',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
-    sa.Column('dataset_id', postgresql.UUID(), nullable=False),
-    sa.Column('document_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('dataset_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('document_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('position', sa.Integer(), nullable=False),
     sa.Column('content', sa.Text(), nullable=False),
     sa.Column('word_count', sa.Integer(), nullable=False),
@@ -265,9 +265,9 @@ def upgrade():
     sa.Column('hit_count', sa.Integer(), nullable=False),
     sa.Column('enabled', sa.Boolean(), server_default=sa.text('true'), nullable=False),
     sa.Column('disabled_at', sa.DateTime(), nullable=True),
-    sa.Column('disabled_by', postgresql.UUID(), nullable=True),
+    sa.Column('disabled_by', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('status', sa.String(length=255), server_default=sa.text("'waiting'::character varying"), nullable=False),
-    sa.Column('created_by', postgresql.UUID(), nullable=False),
+    sa.Column('created_by', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('indexing_at', sa.DateTime(), nullable=True),
     sa.Column('completed_at', sa.DateTime(), nullable=True),
@@ -283,18 +283,18 @@ def upgrade():
         batch_op.create_index('document_segment_tenant_document_idx', ['document_id', 'tenant_id'], unique=False)
 
     op.create_table('documents',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
-    sa.Column('dataset_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('dataset_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('position', sa.Integer(), nullable=False),
     sa.Column('data_source_type', sa.String(length=255), nullable=False),
     sa.Column('data_source_info', sa.Text(), nullable=True),
-    sa.Column('dataset_process_rule_id', postgresql.UUID(), nullable=True),
+    sa.Column('dataset_process_rule_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('batch', sa.String(length=255), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('created_from', sa.String(length=255), nullable=False),
-    sa.Column('created_by', postgresql.UUID(), nullable=False),
-    sa.Column('created_api_request_id', postgresql.UUID(), nullable=True),
+    sa.Column('created_by', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('created_api_request_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('processing_started_at', sa.DateTime(), nullable=True),
     sa.Column('file_id', sa.Text(), nullable=True),
@@ -306,17 +306,17 @@ def upgrade():
     sa.Column('indexing_latency', sa.Float(), nullable=True),
     sa.Column('completed_at', sa.DateTime(), nullable=True),
     sa.Column('is_paused', sa.Boolean(), server_default=sa.text('false'), nullable=True),
-    sa.Column('paused_by', postgresql.UUID(), nullable=True),
+    sa.Column('paused_by', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('paused_at', sa.DateTime(), nullable=True),
     sa.Column('error', sa.Text(), nullable=True),
     sa.Column('stopped_at', sa.DateTime(), nullable=True),
     sa.Column('indexing_status', sa.String(length=255), server_default=sa.text("'waiting'::character varying"), nullable=False),
     sa.Column('enabled', sa.Boolean(), server_default=sa.text('true'), nullable=False),
     sa.Column('disabled_at', sa.DateTime(), nullable=True),
-    sa.Column('disabled_by', postgresql.UUID(), nullable=True),
+    sa.Column('disabled_by', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('archived', sa.Boolean(), server_default=sa.text('false'), nullable=False),
     sa.Column('archived_reason', sa.String(length=255), nullable=True),
-    sa.Column('archived_by', postgresql.UUID(), nullable=True),
+    sa.Column('archived_by', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('archived_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('doc_type', sa.String(length=40), nullable=True),
@@ -328,7 +328,7 @@ def upgrade():
         batch_op.create_index('document_is_paused_idx', ['is_paused'], unique=False)
 
     op.create_table('embeddings',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
     sa.Column('hash', sa.String(length=64), nullable=False),
     sa.Column('embedding', sa.LargeBinary(), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
@@ -336,9 +336,9 @@ def upgrade():
     sa.UniqueConstraint('hash', name='embedding_hash_idx')
     )
     op.create_table('end_users',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=True),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('type', sa.String(length=255), nullable=False),
     sa.Column('external_user_id', sa.String(length=255), nullable=True),
     sa.Column('name', sa.String(length=255), nullable=True),
@@ -353,10 +353,10 @@ def upgrade():
         batch_op.create_index('end_user_tenant_session_id_idx', ['tenant_id', 'session_id', 'type'], unique=False)
 
     op.create_table('installed_apps',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
-    sa.Column('app_owner_tenant_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('app_owner_tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('position', sa.Integer(), nullable=False),
     sa.Column('is_pinned', sa.Boolean(), server_default=sa.text('false'), nullable=False),
     sa.Column('last_used_at', sa.DateTime(), nullable=True),
@@ -374,8 +374,8 @@ def upgrade():
     sa.Column('code', sa.String(length=32), nullable=False),
     sa.Column('status', sa.String(length=16), server_default=sa.text("'unused'::character varying"), nullable=False),
     sa.Column('used_at', sa.DateTime(), nullable=True),
-    sa.Column('used_by_tenant_id', postgresql.UUID(), nullable=True),
-    sa.Column('used_by_account_id', postgresql.UUID(), nullable=True),
+    sa.Column('used_by_tenant_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('used_by_account_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('deprecated_at', sa.DateTime(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='invitation_code_pkey')
@@ -385,9 +385,9 @@ def upgrade():
         batch_op.create_index('invitation_codes_code_idx', ['code', 'status'], unique=False)
 
     op.create_table('message_agent_thoughts',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('message_id', postgresql.UUID(), nullable=False),
-    sa.Column('message_chain_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('message_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('message_chain_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('position', sa.Integer(), nullable=False),
     sa.Column('thought', sa.Text(), nullable=True),
     sa.Column('tool', sa.Text(), nullable=True),
@@ -405,7 +405,7 @@ def upgrade():
     sa.Column('currency', sa.String(), nullable=True),
     sa.Column('latency', sa.Float(), nullable=True),
     sa.Column('created_by_role', sa.String(), nullable=False),
-    sa.Column('created_by', postgresql.UUID(), nullable=False),
+    sa.Column('created_by', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='message_agent_thought_pkey')
     )
@@ -414,8 +414,8 @@ def upgrade():
         batch_op.create_index('message_agent_thought_message_id_idx', ['message_id'], unique=False)
 
     op.create_table('message_chains',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('message_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('message_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('type', sa.String(length=255), nullable=False),
     sa.Column('input', sa.Text(), nullable=True),
     sa.Column('output', sa.Text(), nullable=True),
@@ -426,15 +426,15 @@ def upgrade():
         batch_op.create_index('message_chain_message_id_idx', ['message_id'], unique=False)
 
     op.create_table('message_feedbacks',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
-    sa.Column('conversation_id', postgresql.UUID(), nullable=False),
-    sa.Column('message_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('conversation_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('message_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('rating', sa.String(length=255), nullable=False),
     sa.Column('content', sa.Text(), nullable=True),
     sa.Column('from_source', sa.String(length=255), nullable=False),
-    sa.Column('from_end_user_id', postgresql.UUID(), nullable=True),
-    sa.Column('from_account_id', postgresql.UUID(), nullable=True),
+    sa.Column('from_end_user_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('from_account_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='message_feedback_pkey')
@@ -445,9 +445,9 @@ def upgrade():
         batch_op.create_index('message_feedback_message_idx', ['message_id', 'from_source'], unique=False)
 
     op.create_table('operation_logs',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
-    sa.Column('account_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('account_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('action', sa.String(length=255), nullable=False),
     sa.Column('content', sa.JSON(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
@@ -459,10 +459,10 @@ def upgrade():
         batch_op.create_index('operation_log_account_action_idx', ['tenant_id', 'account_id', 'action'], unique=False)
 
     op.create_table('pinned_conversations',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
-    sa.Column('conversation_id', postgresql.UUID(), nullable=False),
-    sa.Column('created_by', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('conversation_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('created_by', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='pinned_conversation_pkey')
     )
@@ -470,8 +470,8 @@ def upgrade():
         batch_op.create_index('pinned_conversation_conversation_idx', ['app_id', 'conversation_id', 'created_by'], unique=False)
 
     op.create_table('providers',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('provider_name', sa.String(length=40), nullable=False),
     sa.Column('provider_type', sa.String(length=40), nullable=False, server_default=sa.text("'custom'::character varying")),
     sa.Column('encrypted_config', sa.Text(), nullable=True),
@@ -489,8 +489,8 @@ def upgrade():
         batch_op.create_index('provider_tenant_id_provider_idx', ['tenant_id', 'provider_name'], unique=False)
 
     op.create_table('recommended_apps',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('description', sa.JSON(), nullable=False),
     sa.Column('copyright', sa.String(length=255), nullable=False),
     sa.Column('privacy_policy', sa.String(length=255), nullable=False),
@@ -507,10 +507,10 @@ def upgrade():
         batch_op.create_index('recommended_app_is_listed_idx', ['is_listed'], unique=False)
 
     op.create_table('saved_messages',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
-    sa.Column('message_id', postgresql.UUID(), nullable=False),
-    sa.Column('created_by', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('message_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('created_by', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='saved_message_pkey')
     )
@@ -526,8 +526,8 @@ def upgrade():
     sa.UniqueConstraint('session_id')
     )
     op.create_table('sites',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=False),
     sa.Column('icon', sa.String(length=255), nullable=True),
     sa.Column('icon_background', sa.String(length=255), nullable=True),
@@ -549,11 +549,11 @@ def upgrade():
         batch_op.create_index('site_code_idx', ['code', 'status'], unique=False)
 
     op.create_table('tenant_account_joins',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
-    sa.Column('account_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('account_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('role', sa.String(length=16), server_default='normal', nullable=False),
-    sa.Column('invited_by', postgresql.UUID(), nullable=True),
+    sa.Column('invited_by', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='tenant_account_join_pkey'),
@@ -564,7 +564,7 @@ def upgrade():
         batch_op.create_index('tenant_account_join_tenant_id_idx', ['tenant_id'], unique=False)
 
     op.create_table('tenants',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('encrypt_public_key', sa.Text(), nullable=True),
     sa.Column('plan', sa.String(length=255), server_default=sa.text("'basic'::character varying"), nullable=False),
@@ -574,18 +574,18 @@ def upgrade():
     sa.PrimaryKeyConstraint('id', name='tenant_pkey')
     )
     op.create_table('upload_files',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('tenant_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('tenant_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('storage_type', sa.String(length=255), nullable=False),
     sa.Column('key', sa.String(length=255), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('size', sa.Integer(), nullable=False),
     sa.Column('extension', sa.String(length=255), nullable=False),
     sa.Column('mime_type', sa.String(length=255), nullable=True),
-    sa.Column('created_by', postgresql.UUID(), nullable=False),
+    sa.Column('created_by', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('used', sa.Boolean(), server_default=sa.text('false'), nullable=False),
-    sa.Column('used_by', postgresql.UUID(), nullable=True),
+    sa.Column('used_by', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('used_at', sa.DateTime(), nullable=True),
     sa.Column('hash', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id', name='upload_file_pkey')
@@ -594,12 +594,12 @@ def upgrade():
         batch_op.create_index('upload_file_tenant_idx', ['tenant_id'], unique=False)
 
     op.create_table('message_annotations',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
-    sa.Column('conversation_id', postgresql.UUID(), nullable=False),
-    sa.Column('message_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('conversation_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('message_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('content', sa.Text(), nullable=False),
-    sa.Column('account_id', postgresql.UUID(), nullable=False),
+    sa.Column('account_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.PrimaryKeyConstraint('id', name='message_annotation_pkey')
@@ -610,12 +610,12 @@ def upgrade():
         batch_op.create_index('message_annotation_message_idx', ['message_id'], unique=False)
 
     op.create_table('messages',
-    sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
-    sa.Column('app_id', postgresql.UUID(), nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), server_default=sa.text('uuid_generate_v4()'), nullable=False),
+    sa.Column('app_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('model_provider', sa.String(length=255), nullable=False),
     sa.Column('model_id', sa.String(length=255), nullable=False),
     sa.Column('override_model_configs', sa.Text(), nullable=True),
-    sa.Column('conversation_id', postgresql.UUID(), nullable=False),
+    sa.Column('conversation_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('inputs', sa.JSON(), nullable=True),
     sa.Column('query', sa.Text(), nullable=False),
     sa.Column('message', sa.JSON(), nullable=False),
@@ -628,8 +628,8 @@ def upgrade():
     sa.Column('total_price', sa.Numeric(precision=10, scale=7), nullable=True),
     sa.Column('currency', sa.String(length=255), nullable=False),
     sa.Column('from_source', sa.String(length=255), nullable=False),
-    sa.Column('from_end_user_id', postgresql.UUID(), nullable=True),
-    sa.Column('from_account_id', postgresql.UUID(), nullable=True),
+    sa.Column('from_end_user_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('from_account_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('CURRENT_TIMESTAMP(0)'), nullable=False),
     sa.Column('agent_based', sa.Boolean(), server_default=sa.text('false'), nullable=False),
