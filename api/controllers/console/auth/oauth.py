@@ -85,7 +85,7 @@ def _get_account_by_openid_or_email(provider: str, user_info: OAuthUserInfo) -> 
     account = Account.get_by_openid(provider, user_info.id)
 
     if not account:
-        account = Account.query.filter_by(email=user_info.email).first()
+        account = db.session.query(Account).filter_by(email=user_info.email).first()
 
     return account
 

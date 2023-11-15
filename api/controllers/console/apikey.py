@@ -27,7 +27,7 @@ api_key_list = {
 
 
 def _get_resource(resource_id, tenant_id, resource_model):
-    resource = resource_model.query.filter_by(
+    resource = db.session.query(resource_model).filter_by(
         id=resource_id, tenant_id=tenant_id
     ).first()
 

@@ -254,7 +254,7 @@ def clean_unused_dataset_indexes():
                             Document.enabled: False
                         }
 
-                        Document.query.filter_by(dataset_id=dataset.id).update(update_params)
+                        db.session.query(Document).filter_by(dataset_id=dataset.id).update(update_params)
                         db.session.commit()
                         click.echo(click.style('Cleaned unused dataset {} from db success!'.format(dataset.id),
                                                fg='green'))

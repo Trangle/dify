@@ -70,7 +70,7 @@ class DataSourceApi(Resource):
     def patch(self, binding_id, action):
         binding_id = str(binding_id)
         action = str(action)
-        data_source_binding = DataSourceBinding.query.filter_by(
+        data_source_binding = db.session.query(DataSourceBinding).filter_by(
             id=binding_id
         ).first()
         if data_source_binding is None:
@@ -112,7 +112,7 @@ class DataSourceNotionListApi(Resource):
                 raise NotFound('Dataset not found.')
             if dataset.data_source_type != 'notion_import':
                 raise ValueError('Dataset is not notion type.')
-            documents = Document.query.filter_by(
+            documents = db.session.query(Document).filter_by(
                 dataset_id=dataset_id,
                 tenant_id=current_user.current_tenant_id,
                 data_source_type='notion_import',
@@ -123,7 +123,7 @@ class DataSourceNotionListApi(Resource):
                     data_source_info = json.loads(document.data_source_info)
                     exist_page_ids.append(data_source_info['notion_page_id'])
         # get all authorized pages
-        data_source_bindings = DataSourceBinding.query.filter_by(
+        data_source_bindings = db.session.query(DataSourceBinding).filter_by(
             tenant_id=current_user.current_tenant_id,
             provider='notion',
             disabled=False
@@ -162,7 +162,7 @@ class DataSourceNotionApi(Resource):
     def get(self, workspace_id, page_id, page_type):
         workspace_id = str(workspace_id)
         page_id = str(page_id)
-        data_source_binding = DataSourceBinding.query.filter(
+        data_source_binding = db.session.query(DataSourceBinding).filter(
             db.and_(
                 DataSourceBinding.tenant_id == current_user.current_tenant_id,
                 DataSourceBinding.provider == 'notion',

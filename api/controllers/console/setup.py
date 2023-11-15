@@ -83,7 +83,7 @@ def setup_required(view):
 
 def get_setup_status():
     if current_app.config['EDITION'] == 'SELF_HOSTED':
-        return DifySetup.query.first()
+        return db.session.query(DifySetup).first()
     else:
         return True
 

@@ -53,7 +53,7 @@ class InsertExploreAppListApi(Resource):
         parser.add_argument('position', type=int, required=True, nullable=False, location='json')
         args = parser.parse_args()
 
-        app = App.query.filter(App.id == args['app_id']).first()
+        app = db.session.query(App).filter(App.id == args['app_id']).first()
         if not app:
             raise NotFound(f'App \'{args["app_id"]}\' is not found')
 
@@ -70,7 +70,7 @@ class InsertExploreAppListApi(Resource):
             privacy_policy = site.privacy_policy if site.privacy_policy else \
                 args['privacy_policy'] if args['privacy_policy']  else ''
 
-        recommended_app = RecommendedApp.query.filter(RecommendedApp.app_id == args['app_id']).first()
+        recommended_app = db.session.query(RecommendedApp).filter(RecommendedApp.app_id == args['app_id']).first()
 
         if not recommended_app:
             recommended_app = RecommendedApp(
@@ -108,15 +108,15 @@ class InsertExploreAppApi(Resource):
     @only_edition_cloud
     @admin_required
     def delete(self, app_id):
-        recommended_app = RecommendedApp.query.filter(RecommendedApp.app_id == str(app_id)).first()
+        recommended_app = db.session.query(RecommendedApp).filter(RecommendedApp.app_id == str(app_id)).first()
         if not recommended_app:
             return {'result': 'success'}, 204
 
-        app = App.query.filter(App.id == recommended_app.app_id).first()
+        app = db.session.query(App).filter(App.id == recommended_app.app_id).first()
         if app:
             app.is_public = False
 
-        installed_apps = InstalledApp.query.filter(
+        installed_apps = db.session.query(InstalledApp).filter(
             InstalledApp.app_id == recommended_app.app_id,
             InstalledApp.tenant_id != InstalledApp.app_owner_tenant_id
         ).all()
