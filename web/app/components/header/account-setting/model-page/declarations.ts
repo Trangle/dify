@@ -46,6 +46,7 @@ export enum ProviderEnum {
   'localai' = 'localai',
   'zhipuai' = 'zhipuai',
   'baichuan' = 'baichuan',
+  'cohere' = 'cohere',
 }
 
 export type ProviderConfigItem = {
@@ -68,6 +69,7 @@ export enum ModelType {
   textGeneration = 'text-generation',
   embeddings = 'embeddings',
   speech2text = 'speech2text',
+  reranking = 'reranking',
 }
 
 export enum ModelFeature {

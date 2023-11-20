@@ -14,5 +14,6 @@
   "xinference",
   "openllm",
   "xopenai",
-  "localai"
+  "localai",
+  "cohere"
 ]
