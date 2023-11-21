@@ -38,8 +38,12 @@ from libs.passport import PassportService
 import warnings
 warnings.simplefilter("ignore", ResourceWarning)
 
-os.environ['TZ'] = 'UTC'
-time.tzset()
+# fix windows platform
+if os.name == "nt":
+    os.system('tzutil /s "UTC"')    
+else:
+    os.environ['TZ'] = 'UTC'
+    time.tzset()
 
 
 # 自定义的UUID到字符串的JSON编码器
