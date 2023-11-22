@@ -18,6 +18,7 @@ from core.model_providers.models.entity.model_params import ModelMode, ModelKwar
 CHAT_MODELS = [
     'gpt-3.5-turbo', # 4,096 tokens
     'yt-chat-v010', # 4096 tokens
+    'yt-chat-v026', # 4096 tokens
     'pygmalion-2-7b', # 4096 tokens
     'Qwen-Chat', # 16384 tokens
 ]
@@ -25,6 +26,7 @@ CHAT_MODELS = [
 MODEL_MAX_TOKENS = {
     'gpt-3.5-turbo': 4096,
     'yt-chat-v010': 4096,
+    'yt-chat-v026': 4096,
     'pygmalion-2-7b': 4096,
     'Qwen-Chat': 16384,
 }

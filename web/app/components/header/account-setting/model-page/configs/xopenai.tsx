@@ -124,6 +124,13 @@ const config: ProviderConfig = {
                 },
               },
               {
+                key: 'yt-chat-v026',
+                label: {
+                  'en': 'yt-chat-v026',
+                  'zh-Hans': 'yt-chat-v026',
+                },
+              },
+              {
                 key: 'pygmalion-2-7b',
                 label: {
                   'en': 'pygmalion-2-7b',
