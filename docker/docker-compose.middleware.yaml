@@ -34,7 +34,7 @@ services:
 
   # The Weaviate vector store.
   weaviate:
-    image: semitechnologies/weaviate:1.18.4
+    image: semitechnologies/weaviate:1.19.0
     restart: always
     networks:
       - yutang
