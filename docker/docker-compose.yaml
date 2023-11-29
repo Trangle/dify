@@ -236,8 +236,8 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./volumes/db/data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
     healthcheck:
       test: ["CMD", "pg_isready"]
       interval: 1s
@@ -256,8 +256,8 @@ services:
     # Set the redis password when startup redis server.
     command: redis-server --requirepass difyai123456
     #    uncomment to expose redis port to host
-    ports:
-      - "6379:6379"
+    # ports:
+    #   - "6379:6379"
     healthcheck:
       test: ["CMD", "redis-cli","ping"]
 
