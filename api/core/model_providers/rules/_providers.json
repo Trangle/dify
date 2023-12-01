@@ -15,5 +15,6 @@
   "openllm",
   "xopenai",
   "localai",
-  "cohere"
+  "cohere",
+  "jina"
 ]
