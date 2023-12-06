@@ -452,11 +452,6 @@ class DocumentService:
                     notion_info_list = document_data["data_source"]['info_list']['notion_info_list']
                     for notion_info in notion_info_list:
                         count = count + len(notion_info['pages'])
-                documents_count = DocumentService.get_tenant_documents_count()
-                total_count = documents_count + count
-                tenant_document_count = int(current_app.config['TENANT_DOCUMENT_COUNT'])
-                if total_count > tenant_document_count:
-                    raise ValueError(f"over document limit {tenant_document_count}.")
         # if dataset is empty, update dataset data_source_type
         if not dataset.data_source_type:
             dataset.data_source_type = document_data["data_source"]["type"]
@@ -490,7 +485,8 @@ class DocumentService:
                         'score_threshold_enabled': False
                     }
 
-                    dataset.retrieval_model = document_data.get('retrieval_model') if document_data.get('retrieval_model') else default_retrieval_model
+                    dataset.retrieval_model = document_data.get('retrieval_model') if document_data.get(
+                        'retrieval_model') else default_retrieval_model
 
         documents = []
         batch = time.strftime('%Y%m%d%H%M%S') + str(random.randint(100000, 999999))
@@ -741,13 +737,7 @@ class DocumentService:
             notion_info_list = document_data["data_source"]['info_list']['notion_info_list']
             for notion_info in notion_info_list:
                 count = count + len(notion_info['pages'])
-        # check document limit
-        if current_app.config['EDITION'] == 'CLOUD':
-            documents_count = DocumentService.get_tenant_documents_count()
-            total_count = documents_count + count
-            tenant_document_count = int(current_app.config['TENANT_DOCUMENT_COUNT'])
-            if total_count > tenant_document_count:
-                raise ValueError(f"All your documents have overed limit {tenant_document_count}.")
+
         embedding_model = None
         dataset_collection_binding_id = None
         retrieval_model = None
