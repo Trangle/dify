@@ -8,10 +8,11 @@ LABEL maintainer="takatost@gmail.com"
 WORKDIR /app/web
 
 COPY package.json .
-COPY yarn.lock .
+# COPY yarn.lock .
 
-RUN yarn --only=prod
-
+RUN npm config set registry http://registry.npm.taobao.org/ && \
+    yarn config set registry http://registry.npm.taobao.org/ && \
+    yarn --only=prod
 
 # build resources
 FROM base as builder
