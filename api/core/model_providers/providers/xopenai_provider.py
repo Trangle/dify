@@ -21,7 +21,7 @@ from models.provider import ProviderType, ProviderModel, ProviderQuotaType
 BASE_MODELS = [
     'gpt-3.5-turbo',
     'yt-chat-v010', # 4096 tokens
-    'yt-chat-v026', # 4096 tokens
+    'yt-chat-v039', # 16384 tokens
     'pygmalion-2-7b', # 4096 tokens
     'Qwen-Chat', # 16384 tokens
     'multilingual-e5-large',
@@ -162,7 +162,7 @@ class XOpenAIProvider(BaseModelProvider):
         model_max_tokens = {
             'gpt-3.5-turbo': 4096,
             'yt-chat-v010': 4096,
-            'yt-chat-v026': 4096,
+            'yt-chat-v039': 16384,
             'pygmalion-2-7b': 4096,
             'Qwen-Chat': 16384,
         }
@@ -326,7 +326,7 @@ class XOpenAIProvider(BaseModelProvider):
             )
 
             self._add_provider_model(
-                model_name='yt-chat-v026',
+                model_name='yt-chat-v039',
                 model_type=ModelType.TEXT_GENERATION,
                 provider_credentials=credentials
             )

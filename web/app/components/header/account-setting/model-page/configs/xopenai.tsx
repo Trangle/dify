@@ -124,10 +124,10 @@ const config: ProviderConfig = {
                 },
               },
               {
-                key: 'yt-chat-v026',
+                key: 'yt-chat-v039',
                 label: {
-                  'en': 'yt-chat-v026',
-                  'zh-Hans': 'yt-chat-v026',
+                  'en': 'yt-chat-v039',
+                  'zh-Hans': 'yt-chat-v039',
                 },
               },
               {
