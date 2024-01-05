@@ -8,7 +8,9 @@ RUN apt-get update \
 
 COPY requirements.txt /requirements.txt
 
-RUN pip install --prefix=/pkg -r requirements.txt
+RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple && \
+    pip install --no-cache-dir -U pip && \
+    pip install --prefix=/pkg --no-cache-dir -r requirements.txt
 
 # build stage
 FROM python:3.10-slim AS builder
