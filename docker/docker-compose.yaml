@@ -4,6 +4,8 @@ services:
   api:
     image: langgenius/dify-api:0.4.3
     restart: always
+    networks:
+      - yutang
     environment:
       # Startup mode, 'api' starts the API server.
       MODE: api
@@ -132,6 +134,8 @@ services:
   worker:
     image: langgenius/dify-api:0.4.3
     restart: always
+    networks:
+      - yutang
     environment:
       # Startup mode, 'worker' starts the Celery worker for processing the queue.
       MODE: worker
@@ -202,6 +206,8 @@ services:
   web:
     image: langgenius/dify-web:0.4.3
     restart: always
+    networks:
+      - yutang
     environment:
       EDITION: SELF_HOSTED
       # The base URL of console application api server, refers to the Console base URL of WEB service if console domain is
@@ -222,6 +228,8 @@ services:
   db:
     image: postgres:15-alpine
     restart: always
+    networks:
+      - yutang
     environment:
       PGUSER: postgres
       # The password for the default postgres user.
@@ -245,6 +253,8 @@ services:
   redis:
     image: redis:6-alpine
     restart: always
+    networks:
+      - yutang
     volumes:
       # Mount the redis data directory to the container.
       - ./volumes/redis/data:/data
@@ -260,6 +270,8 @@ services:
   weaviate:
     image: semitechnologies/weaviate:1.19.0
     restart: always
+    networks:
+      - yutang
     volumes:
       # Mount the Weaviate data directory to the container.
       - ./volumes/weaviate:/var/lib/weaviate
@@ -287,6 +299,8 @@ services:
   # qdrant:
   #   image: langgenius/qdrant:latest
   #   restart: always
+  #   networks:
+  #     - yutang
   #   volumes:
   #     - ./volumes/qdrant:/qdrant/storage
   #   environment:
@@ -300,6 +314,8 @@ services:
   nginx:
     image: nginx:latest
     restart: always
+    networks:
+      - yutang
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/proxy.conf:/etc/nginx/proxy.conf
@@ -309,3 +325,7 @@ services:
       - web
     ports:
       - "80:80"
+
+networks:
+  yutang:
+    external: true
