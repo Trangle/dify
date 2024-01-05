@@ -1,0 +1,630 @@
+Raiden Shogun
+Genshin Impact character
+First appearance	Genshin Impact (2021)
+Voiced by	
+Anne Yatco (English)
+Ju HuaHua (Chinese)
+Miyuki Sawashiro (Japanese)
+Park Ji-yoon [ko] (Korean)[1]
+In-universe information
+Alias	Raiden Ei, Beelzebub
+Weapon	Polearm
+Birthday	June 26[2]
+
+Raiden Shogun (Chinese: 雷电将军; pinyin: Léidiàn Jiāngjūn; Japanese: 雷電将軍; Hepburn: Raiden Shōgun), real name Raiden Ei (Chinese: 雷电影; pinyin: Léidiàn Yǐng; Japanese: 雷電影; Hepburn: Raiden Ei), is a playable character in Genshin Impact, developed by miHoYo. Within the game's story, she is the ruling god, or "Archon," of the Japan-inspired nation of Inazuma, first encountered as a stern and authoritarian ruler. As with other gods in the game's story, she is also known as Beelzebul, a name derived from the Ars Goetia.[note 1]
+
+Initially a non-playable character, Raiden Shogun was released in September 2021. She met with mixed critical reception, with commentators criticizing her early characterization while lauding her later story arcs and her powerful gameplay and character strength. Her banners saw commercial success, breaking previous records for the game's revenue.
+
+Creation and design
+Promotion
+Raiden Shogun first appeared on July 9, 2021, in miHoYo's promotional program for Version 2.0 of the game, which introduced the nation of Inazuma and its related storyline.[3] She made her in-game debut in the storyline's opening act on July 21, 2021, and was confirmed as an upcoming playable character the day after in promotional illustrations released by miHoYo.[4][5]
+
+In August, miHoyo published more promotional material teasing further story quests that would explore her character's background.[6][7] Along with the quest, her signature weapon, a polearm called "Engulfing Lightning," was also added. She was officially released as a playable character on September 1, 2021.
+
+On February 4, 2022, miHoYo hosted the promotional program for Version 2.5, in which Raiden Shogun was said to assume a new form and become the player's foe.[8] The second act of her character quest introduced the Shogun as a boss that could be fought.[9]
+
+Character design
+Raiden Shogun's design is based on Raiden Mei from Honkai Impact 3rd, another game by miHoYo.[10] In one interview, the developers revealed that Raiden Shogun was the character on which they spent the most time and made the most modifications at the time.[11] To establish her image of a powerful and domineering god, the creators added periods in the boss fights between her and the player in which the player could not use their usual attacks and skills, thereby creating a sense of domination and despair.[11]
+
+Raiden Shogun's design was inspired by various elements of Japanese culture. Raijin, Japan's god of lightning, serves as her archetype.[12] Her name is a combination of an alternate form of Raijin's name (Japanese: 雷電, romanized: Raiden) with the title of shōgun (Japanese: 将軍), the warlords of feudal Japan.[13] Raiden Shogun's "Chakra Desiderata," a feature of her kit visualized as a bright halo that follows close behind her back, resembles a similar detail seen in various depictions of Raijin.[14]
+
+Her clothing consists of a purple kimono resembling a yukata, held by obi around her waist, with relevant modifications to fit the game's aesthetics.[13][15]Mitsudomoe symbols feature prominently in her design. Often associated with the Shinto god Hachiman, the god of war and archery, the inclusion of such symbols served to strengthen the Shogun's characterization as an experienced warrior.[15]
+
+To convey a sense of composure, sovereignty, and sanctity, the developers took inspiration from kendo when creating her character animations. Raiden Shogun's ultimate attack is, in particular, based on the postures of hassō-no-kamae, jōdan-no-kamae, and gedan-no-kamae, as well as movements such as the noutou (Japanese: 納刀, lit. 'sheathing the sword').[16]
+
+Voice acting
+Raiden Shogun's English voice actress is Anne Yatco.[17] In one interview, Yacto explained that she had difficulty finding the commanding style that characterized the Shogun.[18] Sisi Jiang of Kotaku criticized Yatco's dub, writing that it "flattened" Raiden Shogun's complicated personality into a girlboss stereotype.[19]
+
+Both Raiden Shogun's Chinese and Japanese voice actresses – Ju HuaHua and Miyuki Sawashiro, respectively – are known for portraying mature characters.[10]
+
+Appearances
+Raiden Shogun made her in-game debut on July 21, 2021, in Inazuma's opening act, and features as a prominent character in the nation's story chapter. She is initially encountered as a stern and authoritarian ruler, in line with her goal of "pursuing eternity," the ideal with which she is associated in-game. To this end, she has enacted various policies to consolidate her control over the nation, including the isolationist "Sakoku Decree."[20] By the end of the Inazuma chapter's various quests and story arcs, she decides to repeal her policies and adopt a more forward-thinking governance.[21][22]
+
+Raiden Shogun is composed of two separate characters: Raiden Ei, the actual Archon of Inazuma, and the Shogun, a bionic puppet which she created.[21][23] After the death of her twin sister and the previous Archon, Makoto, during the Cataclysm – an apocalyptic event that occurred 500 years prior to the game's main story – Raiden Ei became Inazuma's new Archon, though most Inazumans did not know because Ei had acted as Makoto's political double. Hoping to avoid similar tragedies in the future, Ei creates the Shogun to rule on her behalf, and proceeds to hide her consciousness inside the puppet, secluding herself from the outside world.[24] When she chooses to adopt a different course of governance, Ei is brought into conflict with the Shogun, which she had programmed to resist any future change. Ei is ultimately successful in the battle.
+
+Reception
+
+A cosplay of Raiden Shogun
+Commerical reception
+In September 2021, a week after Raiden Shogun was released, her banner generated $150 million, far exceeding the monthly revenue in August.[25] Genshin Impact topped the sales ranking for mobile games in 42 countries and regions.[26][27] This record exceeded all previous banners until her rerun in Version 2.5.[27][28] A commentator for HK01 attributes her popularity to the excellent character design, widespread advertising, high player expectations, and the discounts of the game's one-year anniversary.[27] In March, 2022, the Shogun's banner saw a rerun, during which Genshin Impact topped iOS charts in over 20 countries and regions.[29]
+
+Critical reception
+Raiden Shogun's characterization and role in Inazuma's story has received mixed critical reception. Sisi Jiang, a contributor to Kotaku, criticized the poor execution of Raiden Shogun's stern and commanding rule, finding that the story failed to engage with its implications and provide sufficient narrative closure.[24] However, she wrote that "Transient Dreams" – Raiden's second Story Quest – redeemed these flaws, praising it as "one of the most realistic portrayals of grief that I have seen in years."[30] Jenni Lada from Siliconera was also disappointed with Raiden's early characterization, finding it underdeveloped and incomplete, but praised "Transient Dreams," writing that it provided the characterization that she had hoped for.[31]
+
+In terms of gameplay, Raiden Shogun received generally positive reviews from video game medias, while some have argued that she is difficult to build and master. Kevin Wong from Screen Rant sees the Shogun as a good character, providing high damage output with her Elemental Burst.[32] Game Rant's Hajrudin Krdzic states that Raiden Shogun is perceived to be a must-have character, which leads to the popularity of her banner. Nahda Nabiilah contends that the Shogun has one of the most interesting mechanics in the game, but building her can be complicated and could lead to diminishing returns.[33][34] Chinese comentator 南山虎 believes that her skills will empower certain team compositions and that the Shogun could be the main damage dealer. However, players should be aware of the cost of building her and the need for specific characters acting as her support.[35] Editors from PC Gamer commented that the Shogun is similar with the other two Archons, Venti and Zhongli, in that she is powerful in her own way.[36] Commentator Rebecca Jones from Rock Paper Shotgun summarized that there exists conflicting opinions on whether the Shogun is better fit as the main damage dealer or a supporting character. Viewing her as a support has gained a slight upper hand. Personally, Jones believed that the Shogun is powerful enough to lead the entire team.[37]
+
+
+
+《原神》全角色详解及强度评价3.雷电将军
+3. 雷系·限定五星·雷电将军
+角色获取方式：
+
+作为2.1版本初登场的限定五星角色，雷电将军目前仅可在她自己的UP池中获得。
+
+UP情况统计：
+
+截止到2.1版本的第一个池子，目前原神一共有过19个UP池，雷电将军仅在最新的雷电将军池中有UP，短时间内大概不会复刻。作为参考，目前复刻最快的限定五星角色达达利亚是隔了五个月左右复刻的。
+
+角色基础数值分析：
+
+雷电将军90级的基础数值如下：
+
+基础生命值 12907
+
+基础攻击力 337
+
+基础防御力 789
+
+突破属性 32%元素充能效率
+
+
+
+雷神（雷电将军的简称之一，接下来都会用这个简称称呼她）的基础数值模板属于五星角色的高血量高防御模板，能够承受的伤害为旅行者的1.2倍左右，基础攻击力也处于五星角色前列，在当前39个角色中排第4位。
+
+突破属性为32%的元素充能效率，由于雷神的固有天赋、专武、圣遗物都能够从充能效率中获得收益，所以充能效率对于雷神而言应该是最好的突破属性之一了。
+
+粗略估算一下的话，在队友能提供1000左右的攻击力BUFF时，该突破属性相当于让使用一精专武的雷神的最终伤害提升了11%左右，同时还保证了雷神的循环能力。
+
+总的来看，雷神的基础数值很是优秀，没有什么可以挑剔的地方。
+
+角色身高：
+
+雷神的身高是成女，奔跑速度约为可莉的1.1倍，身高分为0.5分，用来跑图、刷秘境的体验还不错。
+
+角色天赋性能分析及其优先级：
+
+普通攻击天赋
+
+攻击范围
+
+普攻攻击为五段攻击6hit数，整体长度和宽度都还不错；
+
+蓄力攻击为上挑，范围相对较窄，击飞能力强。
+
+考虑卡肉后的秒均倍率（天赋10级）
+
+普攻的秒均倍率为189%左右（目前还没有比较准确的数据，此处为估算），位于全角色中游偏上；
+
+蓄力的秒均倍率为243%左右，位于全角色中游偏上。
+
+天赋成长率为1.97（10级倍率除以1级倍率）。
+
+雷神的普攻天赋整体上中规中矩，倍率和性能比香菱要好一点（但段数不高，对于流月针的适配性低）。总的来说没有什么明显的缺点，但也没什么突出的优点，作为补刀的手段还行，作为主要输出手段就有点不够看了。或许偶尔可以用重击击飞某些敌人吧。
+
+元素战技
+
+召唤“雷罚恶曜之眼”，对其周围的敌人造成雷元素伤害，此后“雷罚恶曜之眼”会跟随队伍中附近所有角色，在此期间：
+
+角色的攻击对敌人造成伤害时，“雷罚恶曜之眼”会协同攻击，在敌人周围造成雷元素AOE伤害；
+
+角色的元素爆发造成的伤害提升，提升的程度基于该角色元素爆发的能耗。
+
+“雷罚恶曜之眼”的协同攻击每0.9秒至多进行一次。
+
+由队伍中自己的角色以外的角色触发的协同攻击造成的伤害为原本的20%。
+
+持续时间25秒，冷却时间10秒。对元素爆发的伤害提升幅度为每点能耗0.3%（天赋9级以上时）。
+
+范围
+
+半径4左右的圆，圆心为目标敌人。
+
+秒均倍率（天赋9级）
+
+70.65%（考虑到实战中需要走位闪避，以每20秒触发17次协同攻击和1次释放伤害计）
+
+由于雷神的元素战技是一个冷却时间远短于持续时间的脱手技能，故用秒均倍率来代替总倍率作为输出性能参考。
+
+产球效率
+
+若以每20秒触发17次协同攻击和1次释放伤害计，每次攻击有50%的概率产生一个雷元素微粒，则相当于2.22秒产1球，属于还可以的水平。
+
+性能分析
+
+该技能主要有5个用途：
+
+一、为全队角色的元素爆发提供增伤：
+
+该技能平均能给全队提供20%左右的元素爆发增伤，假设元素爆发的伤害占队伍总伤害的80%，队伍元素爆发的原增伤乘区为180%，则该技能相当于提高了全队8.8%的最终输出。这个收益还是挺高的，所以雷神队伍的常规输出手法就是雷神先开元素战技上BUFF，然后其他人依次使用元素爆发。
+
+二、提供中范围AOE脱手伤害：
+
+由于该技能没有快照机制，无法全程享有班尼特或者九条的BUFF，所以常态伤害并不算高，也就几千的水平，能造成的总伤害量大概占雷神总伤害的15%。不过，如果你的队伍中雷神是主C定位，那么你可以让雷神在前台吃诸如班尼特大招一类的前台BUFF，此时该技能的伤害将会因为吃到了班尼特大招而有所提升。
+
+三、生产元素微粒帮助队伍充能
+
+和雷神元素爆发的全队充能效果相得益彰，进一步强化了雷神的充能辅助能力，尤其是对同为雷属性的角色，如九条裟罗。
+
+四、提供长时间的雷附着辅助超导
+
+该技能持续时间极长，且具有一定的AOE能力，能够频繁给多个敌人施加雷附着，虽然有概率影响双冰共鸣提供的暴击率，但总体来说还是是利大于弊的。
+
+这就让雷神成为了冰系物理角色的一个优质队友，如优菈。
+
+五、提供长时间的削韧，让玩家更容易将敌人打出硬直
+
+该技能的削韧效果不错，相当于强化了玩家攻击的压制力，就像可莉的重击一样（当然幅度没那么高，这里只是举个例子便于大家理解）。
+
+总而言之，这个元素战技的功能很全面，整体强度很不错。但有一个缺点，如果敌人处于护盾等状态下，该技能的协同攻击是无法触发的，这一点需要稍微注意一下。
+
+元素爆发
+
+斩出“梦想一刀”，造成雷元素范围伤害，耗时2秒左右。在接下来8秒的时间里，以“梦想一心”战斗。
+
+在梦想一心状态下，雷电将军将用刀战斗，获得无法被覆盖的雷元素附魔，并在这些攻击命中敌人时，为队伍中附近的所有角色回复能量（天赋9级时每次能回复2.4能量，每秒最多恢复1次，最多触发5次）；
+
+在此期间，雷电将军获得极强的抗打断能力，并免疫感电反应造成的伤害；
+
+在梦想一心状态下，雷电将军的普攻、重击、下落攻击伤害被视为元素爆发伤害；
+
+梦想一心状态会在雷电将军退场时解除；
+
+根据释放时消耗的诸愿百眼之轮的愿力层数，梦想一心和梦想一刀的伤害会得到增加（以加技能倍率的方式增加）。
+
+诸愿百眼之轮：队伍中附近的角色（不包括雷电将军自己）释放元素爆发时，会根据其能耗，为诸愿百眼之轮增加愿力，至多60层。愿力会在脱战300秒后清除。天赋10级后，每点元素爆发的能耗可以积攒0.2愿力。
+
+能量需求为90点，冷却时间为18秒。从出现闪电那一刻开始进入冷却计时。
+
+范围
+
+“梦想一刀”的范围为半径为6左右的半圆（存疑，也可能比半圆的弧度要大，但总之打不到身后的单位），“梦想一心”状态时，重击范围和“梦想一刀”的范围接近，普攻中某几段的范围也很不错。
+
+总倍率
+
+由于雷电将军的元素爆发机制非常复杂，需要考虑到愿力的层数（40层还是50层还是60层）、输出的手法（普攻还是A重闪还是AAA重闪还是随机应变）、不同阶段BUFF量的不同，所以难以给出一个具体的倍率，此处略。如果想了解这个元素爆发的输出能力的话，请看下方的性能分析部分。
+
+性能分析
+
+该技能主要有两个用途，一是用来打输出，二是用来给全队回复能量。
+
+先讲讲该技能的输出性能吧：
+
+一个毕业的0命1精专武雷神，在同样毕业的“雷神九条万叶班尼特”的配队之下，一次元素爆发能打出来的总伤害在70万左右，而且大部分为大范围AOE伤害，对群性能不错，兼有一定的对空能力。
+
+整个队伍的20秒总伤则在100万左右，也就是有5万左右的秒伤。这个秒伤不算很高，但在目前的环境下也完全算是够用了。所以如果你没有其他好用的主C的话，把0命专武雷神当主C来养也是可以的。而2命1精专武雷神在该配队下则有百万级别的爆发伤害和7万级别的秒伤，考虑到其不错的AOE能力，已经可以称得上是一个非常强力的主C了。
+
+不过，如果是把雷神当辅助角色来使用的话，因为吃不到各类BUFF，这个伤害值就会缩水很多了，具体缩水多少得看队伍的具体情况。
+
+输出手法方面，重击的DPS和范围都优于普攻，所以第一刀过后，理论最优的输出方式是用“A重击闪避”输出，但连续A重击闪会导致体力消耗过度，实战中可以使用普攻穿插重击的方式来输出。
+
+再谈谈该技能值得强调的两个优点吧：
+
+一是雷神开大期间的抗打断能力和优菈一样，是目前最高的级别，相当于是普通角色带护盾时的抗打断能力，正常情况下是不会被打断的，除非自己直接被打死了。
+
+二是开大后的A重击范围非常可观，举个简单的例子:重击可以同时攻击到2.0版本深渊12-3上的三只遗迹系列怪物。并且有一些对空判定，可以打到温迪风眼中的单位，因此和温迪有一定的适配性。
+
+缺点的话主要有两个：
+
+一是开大的第一刀也就是梦想一刀打不到背后的敌人，导致面对多方位的敌人时不具备一刀清场的能力，有些遗憾。
+
+二是和其他技能、特效的联动判定有些不够明确、无法触发某些技能或特效。比如梦想一心状态下的攻击无法触发“北斗的大招、旅行者（雷）的大招、天空之脊的真空刃”等技能或特效，但可以触发“行秋的雨帘剑”，也可以吃到“攻速类型的加成”。
+
+回能效果方面，在60级突破解锁天赋2之后，该技能的回能效果非常显著，在天赋等级为9级时，释放一次大招能够为全队回复23左右的能量，差不多相当于让80能耗的大招变成了60能耗，让60能耗的大招变成了40能耗，对于像优菈、九条、丽莎这样自身充能能力欠佳的角色来说效果非常显著，能够大幅度优化队伍的循环体验。
+
+固有天赋1（20级突破后解锁）
+
+队伍中附近的角色获得元素晶球或元素微粒时，会为诸愿百眼之轮积攒2层愿力，该效果每3秒至多触发1次。
+
+假设该天赋每20秒能触发5次，叠10层，那么就相当于把第一轮元素爆发的伤害提高了1.4%，把第二轮元素爆发的伤害提高了7.0%，若将雷神大招伤害占比记为85%，将一场战斗中释放的元素爆发次数视为两次，则相当于提高了雷神3.6%的最终伤害。
+
+看上去提升幅度好像不是很大，但其实一般的命之座提升都未必有这么多。
+
+固有天赋2（60级突破后解锁）
+
+基于元素充能效率超过100%的部分，每1%使雷电将军获得下列效果：
+
+梦想一心状态提供的元素能量恢复提高0.6%；
+
+雷元素伤害加成提升0.4%。
+
+相当强力的天赋，假设雷神有250%的充能，则这个天赋让雷神每次释放元素爆发能够额外给全队回复10.8的元素能量（近乎让原先的效果翻倍），同时还提供了高达60%的雷元素伤害加成，比雷伤杯主词条能提供的46.6%还要高出不少，这高额的雷伤使得雷神的圣遗物可以考虑带攻击杯。
+
+相信大家看到上面的数据就能明白这个天赋对雷神而言是多么重要，所以如果你要使用雷神这个角色，请第一时间把她60级突破以解锁这个天赋。
+
+固有天赋3
+
+突破单手剑和长柄武器时，消耗的摩拉减少50%。
+
+假设一个玩家每个月突破二把四星长柄武器或者单手剑，则能够节省15万摩拉，相当于每天额外获得了5000摩拉，等于一次探索派遣的收益，还可以。
+
+天赋优先级
+
+元素爆发大于元素战技大于普蓄天赋，雷神不站场的话，普蓄天赋不需要升级。
+
+命座提升幅度解析
+
+雷神在队伍中既可以担当主C也可以担当副C，不同定位下，雷神的命座对于整个队伍的提升幅度有很大的差别，方便起见，以下计算的提升幅度主要为对雷神本人的提升幅度。
+
+1命 提升幅度约7.3%：
+
+诸愿百眼之轮能够更加迅速地积攒愿力。元素类型为雷元素的角色释放元素爆发后，积攒的愿力提升80%；其他元素类型的元素爆发积攒的愿力提升20%。
+
+解锁一命后，同样一个80能耗的元素爆发，雷属性的能给雷神额外提供12.8愿力，其他属性的能给雷神额外提供3.2愿力，两者之间差了10层左右的愿力，大约会导致雷神的个人总伤害有5.7%的差别，还是不小的，所以在雷神主C的队伍中，可以考虑搭配一个同为雷元素的角色，比如九条裟罗。
+
+在非雷神主C的队伍中倒是无所谓；同时也没必要为此塞两个其他的雷元素角色，因为一个其他的雷元素角色就够把愿力充到60层的上限了，再多的雷元素角色是没收益的。
+
+提升幅度方面，假设队伍中有其他雷元素角色的概率为50%，则该命座大概使雷神元素爆发的伤害提升了8.59%，若将雷神大招伤害占比计为85%，则相当于提高了雷神7.3%的最终伤害。
+
+2命 提升幅度约40.72%：
+
+梦想一刀与梦想一心状态下的雷迪将军的攻击将无视敌人60%的防御力。
+
+意即开大状态下，雷神的元素爆发攻击和元素战技攻击都会无视敌人60%的防御力。这个减防幅度是目前游戏里最大的减防幅度了，如果没有其他的减防BUFF，相当于让雷神在大招期间的伤害提升了42.86%。需要注意的是该命座不会提升队伍中其他角色的输出，不然2命雷神带个强力脱手角色就堪称毁天灭地了。
+
+如果没有其他的减防BUFF，假设雷神在非开大期间的伤害占其总伤害的5%，则该命座让雷神的自身伤害提升了40.72%左右。
+
+这个命座可以说是原神里提升幅度最大的命之座之一了。其他几个有这种提升幅度的命座，基本上都是六命，而雷神这个居然放到了2命，估计是米哈游想趁着周年这个时机能多捞点是一点吧。
+
+3命 提升幅度约15.13%：
+
+元素爆发的技能等级提升3级，等级上限提高到15级
+
+以9级到12级计，相当于提升了17.8%的元素爆发伤害。
+
+若将元素爆发的伤害占比计为85%，则3命能够提升15.13%的雷神个人输出；
+
+4命 提升幅度约3.45%：
+
+元素爆发带来的梦想一心状态结束后，附近队伍中所有角色（不包括雷电将军自己）的攻击力提升30%，持续10秒。
+
+如果是雷九万班这种雷神为主C的队伍，假设雷神的伤害占队伍总伤害的86%（其实0命雷神的伤害占比大概只有80%，但既然是4命雷神了，肯定有1、2、3命了吧，此时雷神的伤害占比提高到了86%左右），假设队伍中其他角色其他来源的总攻击力为2400，该命座相当于提高了他们10%左右的最终输出，则该命座对于队伍的整体提升幅度约为1.4%；
+
+如果是钟班优雷这种双C队伍，假设雷神的伤害占队伍总伤害的45%，假设队伍中其他角色其他来源的总攻击力为3200，该命座还是相当于提高了他们10%左右的最终输出，则该命座对于队伍的提升幅度约为5.5%；
+
+假设雷神作为主C和作为双C使用的比例为1比1，则该命座对于队伍的整体提升幅度约为3.45%。
+
+5命 提升幅度约2.30%：
+
+元素战技的技能等级提高3级，等级上限提高到15级
+
+还是以9到12级计，5命将技能倍率提高了17.7%左右。
+
+假设元素战技造成的伤害占雷神造成总伤害的13%，则该命座的提升幅度约为2.30%。
+
+6命 提升幅度约4.67%（仅对于雷九万班的配队而言）：
+
+处于元素爆发带来的梦想一心状态下时，雷电将军的元素爆发伤害命中敌人时，使附近队伍中所有角色（不包括雷电将军自己）的元素爆发的冷却时间缩短1秒。该效果每秒至多触发1次，在持续期间内至多触发5次。
+
+雷神大招动画要2秒，触发5次6命特效大约要5.3秒，合计一算，想要给队友减5秒CD，最短需要7.3秒时间。
+
+7.3+5=12.3，大于40能量角色的元素爆发CD，也就是说如果通过换人等方法提前结束雷神大招的话，可以让40能量的元素爆发在雷神元素爆发前后各释放一次。
+
+不过，40能量的大招往往伤害都不是很高，即便偶尔有伤害高的，也都依赖增幅反应，和雷神大招不搭，所以基本上都不值得浪费雷神梦想一心状态剩下的3秒输出时间。
+
+倒是可以用来整一个活，那就是搭配4命以上的钟离实现全程无缝石化。
+
+而如果让雷神把梦想一心状态下的输出全部打完，那么大招耗时近10秒，加上减少的5秒CD，足以让60能量15秒CD的元素爆发在雷神元素爆发前后各释放一次。
+
+在60能量大招中，能够因此获得较大收益的，主要有温迪的大招（实现近乎无缝聚怪）、万叶的大招（强化破盾能力和伤害能力）、旅行者（岩）的大招（减少其真空期，不过用六命雷神拐岩主有点本末倒置的感觉）。
+
+对于80能量20CD的元素爆发，由于各角色大招动画本身就占据了一定时间，其实也可以让其近乎于在雷神元素爆发前后各释放一次，比如九条裟罗的元素爆发。
+
+用雷九万班的队伍举个例子：
+
+第1秒雷神使用元素战技，第2秒班尼特使用大招，第3-4秒万叶使用大招，第5-6秒九条使用大招，第7秒雷神使用大招，第17秒雷神使用第二轮元素战技，第18-19秒时万叶使用元素战技，第20秒时班尼特使用第二轮大招，第21—22秒万叶使用第二轮大招，第23秒时，距离九条上一次释放大招已经过去18秒时间，被减少了5秒CD的九条大招此时已经能够释放，于是就达成了近乎无真空期的循环，第23-24秒时九条使用第二轮大招，第25秒时雷神进行了第二轮爆发，第35秒时雷神完成了第二轮爆发。
+
+在这个过程中，九条的大招其实可以再早3秒释放，不过由于雷神本身的CD不会被六命效果减少，所以对于以雷神本身为主C的队伍的第二轮爆发的提速并不明显。
+
+而如果没有六命，循环流程就要修改为：
+
+第1秒雷神E，第2秒班尼特使用大招，第3-4秒万叶使用大招，第5-6秒九条使用大招，第7秒雷神使用大招，第17秒雷神使用第二轮元素战技，第18-19秒九条使用元素战技并吃到其BUFF，第20-21秒万叶使用元素战技，第22秒班尼特使用第二轮大招，第23-24秒万叶使用第二轮大招，第25-26秒时九条使用第二轮大招，第27秒时雷神使用第二轮大招，第37秒时雷神完成了第二轮爆发。
+
+两者相比的话，六命雷神在35秒时完成了两轮爆发，五命雷神在37秒时完成了两轮爆发，后者造成的总伤害量大约是前者的1.01倍，则六命雷神在两轮爆发期的DPS为五命雷神的104.67%左右。
+
+当然实际情况非常复杂，很多时候都不能按照理论上的循环来计算。比如，如果第一套爆发就已经足够清场，那么第二套爆发来得早点晚点都没意义了;反之也有可能遇到早2秒爆发就能跳流程而节省大量时间的场合。所以这个数值只是一个参考，不要尽信。
+
+至于其他的80能量大招，虽然也可以通过雷神的六命获得不小的提升，但要是硬把它们的所有者插入六命雷神的队伍里的话，大多数都反而会降低队伍的整体强度，所以比较有实际意义的大概只有以下几个吧：
+
+香菱的大招、丽莎的大招、琴的大招、神里的大招、优菈的大招。
+
+最后，关于这个命座，给大家总结几句吧：
+
+1. 雷神六命可以用来实现一些原本很难实现的玩法，比如让钟离无缝石化、让温迪无缝聚怪，所以对于喜欢整活的玩家而言有一定价值，在某些相关场合中也会有一定的价值。
+
+2. 雷神六命可以突破CD的限制，因此或许可以成为某些关卡的最优速通解，在延长CD的高难环境中也有一定作用，对于追求极限的竞速玩家而言有一定价值。
+
+3. 雷神六命的实际收益会根据环境和队伍的不同而大幅度变化，4.67%这个数值仅仅是其对于雷九万班配队提升幅度的一个简单参考。
+
+命座抽取建议
+
+将能够提升0-4.0%最终伤害或提供等效收益的命座称为“没必要抽”；
+
+将能够提升4.1%-11.0%最终伤害或提供等效收益的命座称为“可抽”；
+
+将能够提升11.1%-18.0%最终伤害或提供等效收益的命座称为“值得抽”；
+
+将能够提升18.1-50.0%最终伤害或提供等效收益的命座称为“抽到血赚”。
+
+则对于雷神而言，“1命可抽，2命抽到血赚，3命值得抽，4命没必要抽，5命没必要抽，6命可抽”。
+
+当然，如果要抽某个关键命座，比如2命，前面的1个命座其实也是必抽的，这时候我们就换种算法，将关键命座的提升平均分配到前面的命座当中。此时，可以得出以下结论：
+
+雷神的2命强度约为0命的1.50倍，平均每个命座的提升为22.5%，从这个角度来看，雷神的1、2命座都算是抽到血赚的命座。
+
+组队推荐与实战参考
+
+经过对雷神元素战技、元素爆发的分析，我们可以得知这个角色有以下特点：
+
+1.为全队角色的元素爆发提供基于其能耗的增伤
+
+2.提供中范围AOE脱手伤害
+
+3.生产元素微粒帮助队伍充能
+
+4.提供长时间的雷附着辅助超导，但也可能会因此干扰到其他反应
+
+5.提供长时间的削韧，让玩家更容易将敌人打出硬直
+
+6.为全队充能以缓解某些角色的能量循环问题
+
+7.提供较为可观的、可对空的大范围AOE伤害
+
+8.为全队提供攻击力加成，4命限定，幅度不高
+
+9.为全队的元素爆发减CD，6命限定
+
+10.开大期间有极强的抗打断能力，对护盾要求不高
+
+11.本身存在一定的输出真空期
+
+12.爆发期间无法换人
+
+由此我们可以整理出以下适合和雷神组队的角色：
+
+1. 元素爆发伤害占比高、存在充能问题、且不太会被雷神的技能干扰反应的角色，比如优菈、香菱、行秋、九条裟罗、丽莎。
+
+2. 缺乏AOE能力的角色，比如胡桃、宵宫。
+
+3. 存在10秒左右真空期便于让雷神使用大招的角色，比如达达利亚、胡桃、宵宫。
+
+4. 自带冰属性的物理输出角色，比如优菈。
+
+不过，以上这些角色基本都是输出角色，那我们的队伍中还差两个辅助角色。因为雷神和其适配的输出角色相互组合后还缺乏的能力有“聚怪、治疗、减抗、破盾、攻击力增益”等，所以比较合适且强度在线的辅助有以下几个：
+
+1. 班尼特，提供治疗、攻击力增益和部分破盾能力。
+
+2. 万叶，提供聚怪、减抗、增伤和部分破盾能力，同时还能补充一些伤害。
+
+3. 温迪，提供聚怪、减抗、充能能力和部分破盾能力。
+
+4. 琴，提供减抗、治疗和部分破盾能力，2命后还可以提供攻速。
+
+5. 钟离，提供减抗、护盾，同时还能补充一些伤害。
+
+结合以上内容，我个人比较推荐以下3个由雷电将军作为组件的队伍：
+
+1. 雷电将军九条裟罗万叶班尼特，高爆发的雷神单核队伍，其中雷神和九条的配置要求较高。
+
+2. 雷电将军班尼特优菈温迪，比较全面的双核队伍，温迪的大招可用来染冰给优菈充能并为雷神站场期间聚怪，此队伍中温迪携带西风弓基本可以完全解决优菈的充能问题。
+
+3. 雷电将军香菱行秋班尼特，国家队改版，造价相对低廉，性能却不错。
+
+参考视频目前暂缺，之后会补。
+
+角色适用武器评分
+
+雷神的使用场合也是以深渊为主的，故以深渊作为环境计算。
+
+根据深渊统计网站上的数据，雷神组队率最高的队友为班尼特，组队率为50%。这个组队率不算很高，而且班尼特的大招也不一定是给雷神用的，所以这里便把班尼特大招的覆盖率打个折扣计为50%，然后以班尼特为队友、深渊为环境进行计算。
+
+经过简单分析，适合雷神的四星武器有：
+
+西风长枪、决斗之枪、黑岩刺枪、渔获。
+
+适合雷神的五星武器有：
+
+护摩之杖、贯虹之槊、天空之脊、和濮鸢、薙草之稻光。
+
+计算环境与规则
+
+圣遗物为绝缘套，有效副词条数目为25，其中10条为暴击，10条为暴击伤害，剩余5个副词条和沙漏的主词条均为元素充能效率。带雷伤杯还是攻击杯则看具体的武器适合哪种杯子，比如使用贯虹之槊时用雷伤杯更好，使用西风长枪时用攻击杯更好。
+
+拥有更高充能效率的武器会因为能够保证循环而适当加分，比如渔获的充能效率高出了45.9%，则+4.59分；
+
+深渊BUFF提供20%攻击力；
+
+雷神90级0命9级元素战技，9级元素爆发；
+
+将雷神元素爆发的伤害占比计为85%，元素战技的伤害占比计为13%；
+
+四星武器默认精炼3，五星默认精炼1，活动武器默认精炼5，锻造武器默认精炼5；
+
+假设班尼特90级1命9级大、武器为90级风鹰剑、圣遗物为4宗室；
+
+能够提供生命值、防御力、护盾强效等非输出属性的武器会略微加分，比如护摩因为能提供20%生命值，所以最终得分为输出得分93.54分额外再加1分，为94.54分；
+
+特效需要满足特定条件才能触发的武器会按照触发概率计算整体期望值；
+
+拥有其他特殊特效的武器会按其特效收益进行一些处理，比如西风长枪的特效视为：给全队提供了38%充能效率。
+
+基于以上规则而计算出的各武器评分与排序如下：
+
+1. 薙草之稻光 109.49分（充能溢出+7.51分）
+
+2. 护摩之杖 94.54分（假设半血以下概率5%，生命值+1分）
+
+3. 贯虹之槊 90.97分（假设护盾覆盖率50%，特效视为提供了171攻击力，护盾强效+1分）
+
+4. 决斗之枪 90.77分（假设特效提供30%攻击力，防御力+0.5分）
+
+5. 渔获 90.05分（充能溢出+4.59分）
+
+6. 天空之脊 89.92分 （特效视为提升了3.4%的最终输出，充能溢出+3.68分）
+
+7. 和濮鸢 88.87分（特效视为提供了134攻击力和4%全类型增伤）
+
+8. 黑岩刺枪 86.09分（假设特效提供了24%攻击力）
+
+9. 西风长枪 85.18分（特效视为为全队提供了38%充能效率，充能溢出+6.86分）
+
+角色圣遗物推荐：
+
+目前雷神的圣遗物主要有二种选择：
+
+1. 绝缘之旗印
+
+2. 千岩牢固
+
+当你的雷神练度很低、能打出来的伤害不到队伍总伤害的20%时，可以带千岩牢固；
+
+其他情况下则都是绝缘之旗印更好。
+
+圣遗物主属性方面，杯子带攻击杯或雷伤杯均可，主要看你使用什么武器，队伍中是否有班尼特，最好还是自己实战测试一下。头带暴击暴伤头，沙漏的话带充能沙漏。
+
+副属性方面，暴击率、暴击伤害、充能效率、百分比攻击力为需要追求的属性。
+
+至于开荒期的过渡圣遗物，可以使用战狂、流放者。
+
+角色成型成本分析
+
+人物突破素材
+
+最胜紫晶；雷霆数珠；天云草实。
+
+天赋培养素材
+
+天光；熔毁之刻。
+
+通用素材
+
+破旧的刀谭。
+
+等级需求
+
+80级突破。
+
+天赋需求
+
+1/6/9。
+
+武器及圣遗物需求
+
+较高。专武薙草之稻光的强度比其他所有武器都高出一截，不过其他武器也不是不能用。圣遗物方面，雷神适合的绝缘套本身虽然是很泛用的套装，但一来雷神用其他套装的效果会比用绝缘套差不少，二来绝缘套毕竟是最近新出的套装保有率低，所以雷神对圣遗物的要求其实也并不算低。
+
+命座需求
+
+若作为输出位使用，则对于2命有一定要求。
+
+成型成本
+
+所需素材中有大量新素材，养成起来稍微有点麻烦。武器、圣遗物需求较高，命座需求较高，整体成型成本高。
+
+角色总评
+
+作为七神中第三位登场的神，雷神和之前的温迪、钟离有一个明显的区别，那就是她既吃武器又吃命座，而不能抽个0命随便拿把黑缨枪或者西风弓就了事。（如果单纯作为副C辅助倒是可以0命拿鱼叉。）
+
+2命+专武或3命的雷神，在输出能力上大约是0命无专武雷神的1.75倍，这个提升幅度可是其他角色0-6命都不一定能够达到。
+
+一方面，你可以理解为这是米哈游在逼氪，另一方面，你也可以理解为这是米哈游良心发现，把原本6命才会给的东西放到2命就给了。
+
+无论哪种理解，有一个事实是不会改变的：
+
+那就是0命无专武雷神和2命专武雷神是两个强度不在同一档次的角色。
+
+在我个人看来，0命雷神属于一个泛用性高但必要性低的角色。她可以放到很多队伍当中去，比如国家队、优菈队、胡桃队、宵宫队，但她又不是这些队伍的唯一选择，而是有很多上下位替代。有了她你可能会玩的舒服一点，但没有她也并不会怎么影响你的游戏体验。（啊，等等，可能优菈队会对雷神有硬性需求，但也只有优菈队了。）
+
+
+
+但2命专武雷神就不一样了：她本身就值得其他角色围绕她组成一个队伍，同时还因为伤害的大幅度提升而拥有了比0命更强的泛用性，以至于她一跃成为了很多队伍的最优选。
+
+2命专武雷神作为主C来使用，基本上可以说是同价位中最强候补，兼具了高爆发、大范围、循环优秀、操作舒适等各方面优点：
+
+和魈相比，雷神开大不会扣血反而有霸体；
+
+和甘雨相比，雷神不需要瞄准；
+
+和胡桃或宵宫相比，雷神的攻击范围大得多；
+
+和优菈或香菱或神里相比，雷神没有充能问题，也不容易空大；
+
+和公子相比，雷神不是那么依赖队友的练度。
+
+（这么比可能有些以己之长攻人之短的嫌疑，有点不太合适。主要是想给各位形容下2命专武雷神作为主C时优秀的综合性能。）
+
+这还不是全部，由于本身具备充能拐的特性，雷神对于脱手角色和双C队伍的适应性要比常规主C强不少，如果雷神一个人打不过其他主C，那就上两个。
+
+缺点倒是也有，一个是自身破元素盾比较慢，另一个是容易被高难环境的CD延长所限制。不过，前者可以通过队友弥补，后者则并不常见，所以影响不算大。
+
+当然，这一切都要建立在2命专武或3命雷神的基础之上。
+
+因为雷神0-3命的差距非常巨大，所以我给雷神的评分有两个，一个是给0命雷神的评分，一个是给2命专武雷神或3命雷神的评分。
+
+对0命雷神的评分：
+
+深渊评分（权重50%）
+
+85分，拥有众多小功能和良好的泛用性，是很多队伍的可选角色。
+
+秘境评分（权重20%）
+
+85分，能够让一些角色用元素爆发循环刷本。
+
+大世界评分（权重20%）
+
+80分，可用。
+
+高难评分（权重10%）
+
+80分，可以作为充能拐出场，因为雷神的回能是回复固定数值，所以不会受到“降低充能效率”之类DEBUFF的影响。但雷神本身的CD较长，容易被延长CD的DEBUFF限制。另外由于大招吃攻速，在冰环境下输出也会打点折扣。
+
+身高分
+
+0.5分
+
+最终评分
+
+84分
+
+对2命专武或3命雷神的评分：
+
+深渊评分（权重50%）
+
+95分，最优的输出角色之一，同时还兼顾了拐队友的能力。
+
+秘境评分（权重20%）
+
+90分，配合队友能够轻松用元素爆发循环刷本。
+
+大世界评分（权重20%）
+
+85分，还不错。
+
+高难评分（权重10%）
+
+85分，可以作为充能拐出场，虽然依旧容易被延长CD的DEBUFF和冰环境限制，但只要能一波把怪全秒了，这个问题就显现不出来了。
+
+身高分
+
+0.5分
+
+最终评分
+
+91.5分
+
+角色培养建议
+
+如果你的雷神为0命且无专武，推荐作为辅助、副C培养；
+
+如果你的雷神为0-1命且有专武，则既可作为辅助、副C培养，也可作为主C培养，至于是否要培养为主C，得看你打深渊缺不缺C位。
+
+如果你的雷神为2命以上且有专武，推荐作为主C培养，也可以在你有其他强力C位时作为副C培养。
