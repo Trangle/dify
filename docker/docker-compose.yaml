@@ -2,7 +2,7 @@ version: '3.1'
 services:
   # API service
   api:
-    image: langgenius/dify-api:0.4.3
+    image: langgenius/dify-api:0.4.4
     restart: always
     networks:
       - yutang
@@ -132,7 +132,7 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: langgenius/dify-api:0.4.3
+    image: langgenius/dify-api:0.4.4
     restart: always
     networks:
       - yutang
@@ -204,7 +204,7 @@ services:
 
   # Frontend web application.
   web:
-    image: langgenius/dify-web:0.4.3
+    image: langgenius/dify-web:0.4.4
     restart: always
     networks:
       - yutang
@@ -261,7 +261,7 @@ services:
     # Set the redis password when startup redis server.
     command: redis-server --requirepass difyai123456
     healthcheck:
-      test: ["CMD", "redis-cli","ping"]
+      test: [ "CMD", "redis-cli", "ping" ]
     # uncomment to expose redis port to host
     # ports:
     #   - "6379:6379"
