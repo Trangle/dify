@@ -1,49 +1,46 @@
+import json
 from typing import List, Tuple
 
-from flask import current_app
-
-from core.tools.tool_manager import ToolManager
-from core.tools.entities.user_entities import UserToolProvider, UserTool
-from core.tools.entities.tool_entities import ApiProviderSchemaType, ApiProviderAuthType, ToolProviderCredentials, \
-    ToolCredentialsOption
 from core.tools.entities.common_entities import I18nObject
 from core.tools.entities.tool_bundle import ApiBasedToolBundle
-from core.tools.provider.tool_provider import ToolProviderController
+from core.tools.entities.tool_entities import (ApiProviderAuthType, ApiProviderSchemaType, ToolCredentialsOption,
+                                               ToolProviderCredentials)
+from core.tools.entities.user_entities import UserTool, UserToolProvider
+from core.tools.errors import ToolNotFoundError, ToolProviderCredentialValidationError, ToolProviderNotFoundError
 from core.tools.provider.api_tool_provider import ApiBasedToolProviderController
-from core.tools.utils.parser import ApiBasedToolSchemaParser
+from core.tools.provider.tool_provider import ToolProviderController
+from core.tools.tool_manager import ToolManager
+from core.tools.utils.configuration import ToolConfiguration
 from core.tools.utils.encoder import serialize_base_model_array, serialize_base_model_dict
-from core.tools.utils.configration import ToolConfiguration
-from core.tools.errors import ToolProviderCredentialValidationError, ToolProviderNotFoundError, ToolNotFoundError
-
+from core.tools.utils.parser import ApiBasedToolSchemaParser
 from extensions.ext_database import db
-from models.tools import BuiltinToolProvider, ApiToolProvider
-
+from flask import current_app
 from httpx import get
+from models.tools import ApiToolProvider, BuiltinToolProvider
 
-import json
 
 class ToolManageService:
     @staticmethod
-    def list_tool_providers(user_id: str, tanent_id: str):
+    def list_tool_providers(user_id: str, tenant_id: str):
         """
             list tool providers
 
             :return: the list of tool providers
         """
         result = [provider.to_dict() for provider in ToolManager.user_list_providers(
-            user_id, tanent_id
+            user_id, tenant_id
         )]
 
         # add icon url prefix
         for provider in result:
-            ToolManageService.repacket_provider(provider)
+            ToolManageService.repack_provider(provider)
 
         return result
     
     @staticmethod
-    def repacket_provider(provider: dict):
+    def repack_provider(provider: dict):
         """
-            repacket provider
+            repack provider
 
             :param provider: the provider dict
         """
@@ -286,7 +283,7 @@ class ToolManageService:
         ).first()
 
         if provider is None:
-            raise ValueError(f'yout have not added provider {provider}')
+            raise ValueError(f'you have not added provider {provider}')
         
         return json.loads(
             serialize_base_model_array([
@@ -362,7 +359,7 @@ class ToolManageService:
     
     @staticmethod
     def update_api_tool_provider(
-        user_id: str, tenant_id: str, provider_name: str, original_provider: str, icon: str, credentials: dict, 
+        user_id: str, tenant_id: str, provider_name: str, original_provider: str, icon: dict, credentials: dict, 
         schema_type: str, schema: str, privacy_policy: str
     ):
         """
@@ -387,7 +384,7 @@ class ToolManageService:
         
         # update db provider
         provider.name = provider_name
-        provider.icon = icon
+        provider.icon = json.dumps(icon)
         provider.schema = schema
         provider.description = extra_info.get('description', '')
         provider.schema_type_str = ApiProviderSchemaType.OPENAPI.value
@@ -424,7 +421,7 @@ class ToolManageService:
         ).first()
 
         if provider is None:
-            raise ValueError(f'yout have not added provider {provider}')
+            raise ValueError(f'you have not added provider {provider}')
         
         db.session.delete(provider)
         db.session.commit()
@@ -457,7 +454,7 @@ class ToolManageService:
         ).first()
 
         if provider is None:
-            raise ValueError(f'yout have not added provider {provider}')
+            raise ValueError(f'you have not added provider {provider}')
         
         db.session.delete(provider)
         db.session.commit()
@@ -485,10 +482,10 @@ class ToolManageService:
         if schema_type not in [member.value for member in ApiProviderSchemaType]:
             raise ValueError(f'invalid schema type {schema_type}')
         
-        if schema_type == ApiProviderSchemaType.OPENAPI.value:
-            tool_bundles = ApiBasedToolSchemaParser.parse_openapi_yaml_to_tool_bundle(schema)
-        else:
-            raise ValueError(f'invalid schema type {schema_type}')
+        try:
+            tool_bundles, _ = ApiBasedToolSchemaParser.auto_parse_to_tool_bundle(schema)
+        except Exception as e:
+            raise ValueError(f'invalid schema')
         
         # get tool bundle
         tool_bundle = next(filter(lambda tb: tb.operation_id == tool_name, tool_bundles), None)
