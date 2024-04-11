@@ -11,7 +11,8 @@ RUN apt-get update \
 
 COPY requirements.txt /requirements.txt
 
-RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple && \
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip config set global.index-url https://mirrors.aliyun.com/pypi/simple && \
     pip install --no-cache-dir -U pip && \
     pip install --prefix=/pkg --no-cache-dir -r requirements.txt
 
