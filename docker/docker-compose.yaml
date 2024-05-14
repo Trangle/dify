@@ -4,8 +4,6 @@ services:
   api:
     image: langgenius/dify-api:0.6.8
     restart: always
-    networks:
-      - yutang
     environment:
       # Startup mode, 'api' starts the API server.
       MODE: api
@@ -176,6 +174,7 @@ services:
     # ports:
     #   - "5001:5001"
     networks:
+      - yutang
       - ssrf_proxy_network
       - default
 
@@ -184,8 +183,6 @@ services:
   worker:
     image: langgenius/dify-api:0.6.8
     restart: always
-    networks:
-      - yutang
     environment:
       CONSOLE_WEB_URL: ''
       # Startup mode, 'worker' starts the Celery worker for processing the queue.
@@ -294,6 +291,7 @@ services:
       # Mount the storage directory to the container, for storing user files.
       - ./volumes/app/storage:/app/api/storage
     networks:
+      - yutang
       - ssrf_proxy_network
       - default
 
@@ -403,6 +401,7 @@ services:
     volumes:
       - ./volumes/sandbox/dependencies:/dependencies
     networks:
+      - yutang
       - ssrf_proxy_network
 
   # ssrf_proxy server
@@ -415,6 +414,7 @@ services:
       # pls clearly modify the squid.conf file to fit your network environment.
       - ./volumes/ssrf_proxy/squid.conf:/etc/squid/squid.conf
     networks:
+      - yutang
       - ssrf_proxy_network
       - default
   # Qdrant vector store.
