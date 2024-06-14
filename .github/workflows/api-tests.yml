@@ -14,7 +14,6 @@ concurrency:
 
 jobs:
   test:
-    name: API Tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -59,7 +58,7 @@ jobs:
       - name: Run Workflow
         run: dev/pytest/pytest_workflow.sh
 
-      - name: Set up Vector Stores (Weaviate, Qdrant, PGVector, Milvus, PgVecto-RS)
+      - name: Set up Vector Stores (Weaviate, Qdrant, PGVector, Milvus, PgVecto-RS, Chroma)
         uses: hoverkraft-tech/compose-action@v2.0.0
         with:
           compose-file: |
@@ -68,6 +67,7 @@ jobs:
             docker/docker-compose.milvus.yaml
             docker/docker-compose.pgvecto-rs.yaml
             docker/docker-compose.pgvector.yaml
+            docker/docker-compose.chroma.yaml
           services: |
             weaviate
             qdrant
@@ -76,11 +76,13 @@ jobs:
             milvus-standalone
             pgvecto-rs
             pgvector
+            chroma
 
       - name: Test Vector Stores
         run: dev/pytest/pytest_vdb.sh
 
   test-in-poetry:
+    name: API Tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -89,26 +91,26 @@ jobs:
           - "3.11"
 
     steps:
-      - name: Install poetry
-        uses: abatilo/actions-poetry@v3
-        with:
-          poetry-version: "1.8.1"
-
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v3
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'poetry'
-          cache-dependency-path: ./api/poetry.lock
+          cache-dependency-path: |
+            api/pyproject.toml
+            api/poetry.lock
 
       - name: Poetry check
         run: poetry check -C api
 
       - name: Install dependencies
-        run: poetry install -C api
+        run: poetry install -C api --with dev
 
       - name: Run Unit tests
         run: poetry run -C api bash dev/pytest/pytest_unit_tests.sh
@@ -131,7 +133,7 @@ jobs:
       - name: Run Workflow
         run: poetry run -C api bash dev/pytest/pytest_workflow.sh
 
-      - name: Set up Vector Stores (Weaviate, Qdrant, PGVector, Milvus, PgVecto-RS)
+      - name: Set up Vector Stores (Weaviate, Qdrant, PGVector, Milvus, PgVecto-RS, Chroma)
         uses: hoverkraft-tech/compose-action@v2.0.0
         with:
           compose-file: |
@@ -140,6 +142,7 @@ jobs:
             docker/docker-compose.milvus.yaml
             docker/docker-compose.pgvecto-rs.yaml
             docker/docker-compose.pgvector.yaml
+            docker/docker-compose.chroma.yaml
           services: |
             weaviate
             qdrant
@@ -148,6 +151,7 @@ jobs:
             milvus-standalone
             pgvecto-rs
             pgvector
+            chroma
 
       - name: Test Vector Stores
         run: poetry run -C api bash dev/pytest/pytest_vdb.sh
